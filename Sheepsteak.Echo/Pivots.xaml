@@ -1,0 +1,70 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone">
+    <!-- Resource dictionary entries should be defined here. -->
+    <Style
+        x:Key="Pivot.Style"
+        TargetType="phone:Pivot">
+        <Setter
+            Property="Margin"
+            Value="0" />
+        <Setter
+            Property="Padding"
+            Value="0" />
+        <Setter
+            Property="Foreground"
+            Value="White" />
+        <Setter
+            Property="Background"
+            Value="White" />
+        <Setter
+            Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Grid />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="phone:Pivot">
+                    <Grid
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid
+                            Background="{TemplateBinding Background}"
+                            Grid.RowSpan="3" />
+                        <Grid
+                            Background="#af1d1d"
+                            Grid.RowSpan="2" />
+                        <ContentControl
+                            ContentTemplate="{TemplateBinding TitleTemplate}"
+                            Content="{TemplateBinding Title}"
+                            HorizontalAlignment="Left"
+                            Margin="24,17,0,-7"
+                            Style="{StaticResource PivotTitleStyle}" />
+                        <Primitives:PivotHeadersControl
+                            x:Name="HeadersListElement"
+                            Grid.Row="1" />
+                        <ItemsPresenter
+                            x:Name="PivotItemPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            Grid.Row="2" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
