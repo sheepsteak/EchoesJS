@@ -9,7 +9,7 @@
     <Application.Resources>
     	<ResourceDictionary>
     		<ResourceDictionary.MergedDictionaries>
-    			<ResourceDictionary Source="Pivots.xaml"/>
+    			<ResourceDictionary Source="Assets/Styles/Pivots.xaml"/>
     		</ResourceDictionary.MergedDictionaries>
     		<local:LocalizedStrings xmlns:local="clr-namespace:Sheepsteak.Echo" x:Key="LocalizedStrings"/>
     	</ResourceDictionary>

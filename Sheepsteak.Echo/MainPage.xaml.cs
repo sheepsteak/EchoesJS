@@ -23,8 +23,13 @@ namespace Sheepsteak.Echo
         }
 
         // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            var echoJsClient = new EchoJsClient();
+
+            var articles = await echoJsClient.GetTopNews();
+
+            this.topList.ItemsSource = articles.ToList();
         }
 
         // Sample code for building a localized ApplicationBar

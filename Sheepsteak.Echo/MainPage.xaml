@@ -56,7 +56,8 @@
                 Header="{Binding LocalizedResources.TopPivotTitle, Source={StaticResource LocalizedStrings}}">
                 <!--Double line list with text wrapping-->
                 <phone:LongListSelector
-                    Margin="0,-6,-12,0"
+                    x:Name="topList"
+                    Margin="0,0,-12,0"
                     ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
@@ -64,11 +65,12 @@
                                 Margin="0,0,0,17">
                                 <TextBlock
                                     Foreground="Black"
-                                    Text="{Binding LineOne}"
+                                    Text="{Binding Title}"
                                     TextWrapping="Wrap"
                                     Style="{StaticResource PhoneTextLargeStyle}" />
                                 <TextBlock
-                                    Text="{Binding LineTwo}"
+                                    Foreground="#999"
+                                    Text="{Binding Description}"
                                     TextWrapping="Wrap"
                                     Margin="12,-6,12,0"
                                     Style="{StaticResource PhoneTextSubtleStyle}" />
@@ -91,12 +93,12 @@
                                 Margin="0,0,0,17">
                                 <TextBlock
                                     Foreground="Black"
-                                    Text="{Binding LineOne}"
+                                    Text="{Binding Title}"
                                     TextWrapping="NoWrap"
                                     Margin="12,0,0,0"
                                     Style="{StaticResource PhoneTextLargeStyle}" />
                                 <TextBlock
-                                    Text="{Binding LineThree}"
+                                    Text="{Binding Description}"
                                     TextWrapping="NoWrap"
                                     Margin="12,-6,0,0"
                                     Style="{StaticResource PhoneTextSubtleStyle}" />
