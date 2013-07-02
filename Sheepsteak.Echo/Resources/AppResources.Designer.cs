@@ -97,6 +97,15 @@ namespace Sheepsteak.Echo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to refresh.
+        /// </summary>
+        public static string RefreshAppBarButtonText {
+            get {
+                return ResourceManager.GetString("RefreshAppBarButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {

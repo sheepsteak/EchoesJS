@@ -143,4 +143,7 @@
   <data name="TopPivotTitle" xml:space="preserve">
     <value>top</value>
   </data>
+  <data name="RefreshAppBarButtonText" xml:space="preserve">
+    <value>refresh</value>
+  </data>
 </root>
