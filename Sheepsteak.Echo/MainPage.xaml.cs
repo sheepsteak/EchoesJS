@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Sheepsteak.Echo.Resources;
+using System.Threading.Tasks;
 
 namespace Sheepsteak.Echo
 {
@@ -27,7 +28,14 @@ namespace Sheepsteak.Echo
         {
             var echoJsClient = new EchoJsClient();
 
+            this.progressIndicator.IsVisible = true;
+            this.loadingTextBlock.Visibility = Visibility.Visible;
+
+            await Task.Delay(4444);
             var articles = await echoJsClient.GetTopNews();
+
+            this.progressIndicator.IsVisible = false;
+            this.loadingTextBlock.Visibility = Visibility.Collapsed;
 
             this.topList.ItemsSource = articles.ToList();
         }
