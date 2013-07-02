@@ -29,6 +29,7 @@ namespace Sheepsteak.Echo
             var articles = (from a in jObject["news"]
                             select new Article()
                             {
+                                Id = (int)a["id"],
                                 DownVotes = (int)a["down"],
                                 PostedAt = ConvertFromUnixTimestamp((long)a["ctime"]),
                                 Title = (string)a["title"],
@@ -45,5 +46,7 @@ namespace Sheepsteak.Echo
             var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return origin.AddSeconds(timestamp);
         }
+
+      
     }
 }

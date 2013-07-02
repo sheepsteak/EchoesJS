@@ -8,6 +8,8 @@ namespace Sheepsteak.Echo.Model
 {
     public class Article
     {
+        public int Id { get; set; }
+
         public string Description
         {
             get { return this.UpVotes + " up and " + this.DownVotes + " down, posted by " + this.Username + " " + this.PostedAt.ToShortTimeString(); }

@@ -1,10 +1,12 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Sheepsteak.Echo.Model;
 using Sheepsteak.Echo.Resources;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -66,7 +68,7 @@ namespace Sheepsteak.Echo.Features.Main
             this.IsRefreshing = true;
 
             this.topList.ItemsSource = null;
-           
+
             var articles = await this.echoJsClient.GetTopNews();
 
             this.topList.ItemsSource = articles.ToList();
@@ -92,6 +94,18 @@ namespace Sheepsteak.Echo.Features.Main
             this.refreshButton.Click += this.Refresh_Click;
             this.refreshButton.Text = AppResources.RefreshAppBarButtonText;
             this.ApplicationBar.Buttons.Add(refreshButton);
+        }
+
+        private void TopList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var article = e.AddedItems[0] as Article;
+
+            var uriString = "/Features/Articles/ArticlePage.xaml?" +
+                "id=" + article.Id +
+                "&url=" + Uri.EscapeDataString(article.Url) +
+                "&title=" + Uri.EscapeDataString(article.Title) +
+                "&description="+Uri.EscapeDataString(article.Description);
+            this.NavigationService.Navigate(new Uri(uriString, UriKind.Relative));
         }
     }
 }
