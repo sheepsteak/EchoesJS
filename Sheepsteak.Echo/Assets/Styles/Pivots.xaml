@@ -3,7 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone">
-    <!-- Resource dictionary entries should be defined here. -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary
+            Source="Colours.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <Style
         x:Key="Pivot.Style"
         TargetType="phone:Pivot">
@@ -47,7 +50,7 @@
                             Background="{TemplateBinding Background}"
                             Grid.RowSpan="3" />
                         <Grid
-                            Background="#af1d1d"
+                            Background="{StaticResource Brush.Main}"
                             Grid.RowSpan="2" />
                         <ContentControl
                             ContentTemplate="{TemplateBinding TitleTemplate}"

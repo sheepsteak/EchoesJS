@@ -64,7 +64,8 @@
                         x:Name="topList"
                         Margin="0,0,-12,0"
                         SelectionChanged="TopList_SelectionChanged"
-                        ItemsSource="{Binding Items}">
+                        ItemsSource="{Binding Items}"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel
