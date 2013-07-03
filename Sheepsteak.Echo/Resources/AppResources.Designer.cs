@@ -133,11 +133,29 @@ namespace Sheepsteak.Echo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to text.
+        /// </summary>
+        public static string TextAppBarButtonText {
+            get {
+                return ResourceManager.GetString("TextAppBarButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to top.
         /// </summary>
         public static string TopPivotTitle {
             get {
                 return ResourceManager.GetString("TopPivotTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to web.
+        /// </summary>
+        public static string WebAppBarButtonText {
+            get {
+                return ResourceManager.GetString("WebAppBarButtonText", resourceCulture);
             }
         }
     }

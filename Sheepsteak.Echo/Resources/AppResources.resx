@@ -146,4 +146,10 @@
   <data name="RefreshAppBarButtonText" xml:space="preserve">
     <value>refresh</value>
   </data>
+  <data name="TextAppBarButtonText" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="WebAppBarButtonText" xml:space="preserve">
+    <value>web</value>
+  </data>
 </root>
