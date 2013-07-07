@@ -4,6 +4,7 @@ using Sheepsteak.Echo.Features.Articles;
 using Sheepsteak.Echo.Features.Main;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows.Controls;
 
 namespace Sheepsteak.Echo
@@ -27,6 +28,7 @@ namespace Sheepsteak.Echo
 
             this.container.PerRequest<ArticlePageViewModel>();
             this.container.PerRequest<MainPageViewModel>();
+            this.container.Singleton<EchoJsClient>();
 
             AddCustomConventions();
         }
@@ -52,6 +54,29 @@ namespace Sheepsteak.Echo
 
         private static void AddCustomConventions()
         {
+            ConventionManager.AddElementConvention<LongListSelector>(LongListSelector.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
+                (viewModelType, path, property, element, convention) =>
+                {
+                    if (!ConventionManager.SetBindingWithoutBindingOrValueOverwrite(
+                        viewModelType, path, property, element, convention, LongListSelector.ItemsSourceProperty))
+                    {
+                        return false;
+                    }
+
+                    ApplyLongListSelectorItemTemplate((LongListSelector)element, property);
+
+                    return true;
+                    //if (ConventionManager
+                    //    .GetElementConvention(typeof(ItemsControl))
+                    //    .ApplyBinding(viewModelType, path, property, element, convention))
+                    //{
+                    //    ConventionManager
+                    //        .ConfigureSelectedItem(element, Pivot.SelectedItemProperty, viewModelType, path);
+
+                    //    return true;
+                    //}
+                };
+
             ConventionManager.AddElementConvention<Pivot>(Pivot.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
                 (viewModelType, path, property, element, convention) =>
                 {
@@ -85,6 +110,21 @@ namespace Sheepsteak.Echo
 
                     return false;
                 };
+        }
+
+        /// <summary>
+        /// Attempts to apply the default item template to the items control.
+        /// </summary>
+        /// <param name="itemsControl">The items control.</param>
+        /// <param name="property">The collection property.</param>
+        private static void ApplyLongListSelectorItemTemplate(LongListSelector longlistSelector, PropertyInfo property)
+        {
+            if (longlistSelector.ItemTemplate != null)
+            {
+                return;
+            }
+
+            longlistSelector.ItemTemplate = ConventionManager.DefaultItemTemplate;
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Sheepsteak.Echo.Features.Main
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private readonly EchoJsClient echoJsClient;
         private bool isRefreshing = false;
         private ApplicationBarIconButton refreshButton;
 
@@ -23,7 +22,6 @@ namespace Sheepsteak.Echo.Features.Main
         {
             InitializeComponent();
 
-            this.echoJsClient = new EchoJsClient();
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
@@ -51,36 +49,6 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
-
-        // Load data for the ViewModel Items
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            await this.Refresh();
-        }
-
-        private async Task Refresh()
-        {
-            if (this.isRefreshing)
-            {
-                return;
-            }
-
-            this.IsRefreshing = true;
-
-            this.topList.ItemsSource = null;
-
-            var articles = await this.echoJsClient.GetTopNews();
-
-            this.topList.ItemsSource = articles.ToList();
-
-            this.IsRefreshing = false;
-        }
-
-        private async void Refresh_Click(object sender, EventArgs e)
-        {
-            await this.Refresh();
-        }
-
         // Sample code for building a localized ApplicationBar
         private void BuildLocalizedApplicationBar()
         {
@@ -91,21 +59,8 @@ namespace Sheepsteak.Echo.Features.Main
 
             // Create a new button and set the text value to the localized string from AppResources.
             this.refreshButton = new ApplicationBarIconButton(new Uri("/Assets/Images/refresh.png", UriKind.Relative));
-            this.refreshButton.Click += this.Refresh_Click;
             this.refreshButton.Text = AppResources.RefreshAppBarButtonText;
             this.ApplicationBar.Buttons.Add(refreshButton);
-        }
-
-        private void TopList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var article = e.AddedItems[0] as Article;
-
-            var uriString = "/Features/Articles/ArticlePage.xaml?" +
-                "id=" + article.Id +
-                "&url=" + Uri.EscapeDataString(article.Url) +
-                "&title=" + Uri.EscapeDataString(article.Title) +
-                "&description="+Uri.EscapeDataString(article.Description);
-            this.NavigationService.Navigate(new Uri(uriString, UriKind.Relative));
         }
     }
 }
