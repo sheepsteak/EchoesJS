@@ -21,7 +21,6 @@
     </shell:SystemTray.ProgressIndicator>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid
-        x:Name="LayoutRoot"
         Background="Transparent">
 
         <!-- LOCALIZATION NOTE:
@@ -45,81 +44,24 @@
 
         <!--Pivot Control-->
         <phone:Pivot
+            x:Name="Items"
             Title="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
             Style="{StaticResource Pivot.Style}">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock
                         Margin="0,-6,0,29"
-                        Text="{Binding}" />
+                        Text="{Binding DisplayName}" />
                 </DataTemplate>
             </phone:Pivot.HeaderTemplate>
-            <!--Pivot item one-->
-            <phone:PivotItem
-                Header="{Binding LocalizedResources.TopPivotTitle, Source={StaticResource LocalizedStrings}}"
-                Margin="12,0">
-                <Grid>
-                    <!--Double line list with text wrapping-->
-                    <phone:LongListSelector
-                        x:Name="Articles"
-                        Margin="0,0,-12,0"
-                        ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel
-                                    Margin="0,0,0,17">
-                                    <TextBlock
-                                        Foreground="Black"
-                                        Text="{Binding Title}"
-                                        TextWrapping="Wrap"
-                                        Style="{StaticResource PhoneTextLargeStyle}" />
-                                    <TextBlock
-                                        Foreground="#999"
-                                        Text="{Binding Description}"
-                                        TextWrapping="Wrap"
-                                        Margin="12,-6,12,0"
-                                        Style="{StaticResource PhoneTextSubtleStyle}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
-                    <TextBlock
-                        x:Name="loadingTextBlock"
-                        Foreground="Black"
-                        HorizontalAlignment="Center"
-                        Style="{StaticResource PhoneTextNormalStyle}"
-                        Text="Loading..."
-                        VerticalAlignment="Center" />
-                </Grid>
-            </phone:PivotItem>
-
-            <!--Pivot item two-->
-            <phone:PivotItem
-                Header="{Binding LocalizedResources.LatestPivotTitle, Source={StaticResource LocalizedStrings}}"
-                Margin="12,0">
-                <!--Double line list no text wrapping-->
-                <phone:LongListSelector
-                    Margin="0,0,-12,0">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel
-                                Margin="0,0,0,17">
-                                <TextBlock
-                                    Foreground="Black"
-                                    Text="{Binding Title}"
-                                    TextWrapping="NoWrap"
-                                    Margin="12,0,0,0"
-                                    Style="{StaticResource PhoneTextLargeStyle}" />
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    TextWrapping="NoWrap"
-                                    Margin="12,-6,0,0"
-                                    Style="{StaticResource PhoneTextSubtleStyle}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
-            </phone:PivotItem>
+            <phone:Pivot.ItemContainerStyle>
+                <Style
+                    TargetType="phone:PivotItem">
+                    <Setter
+                        Property="Margin"
+                        Value="12,0" />
+                </Style>
+            </phone:Pivot.ItemContainerStyle>
         </phone:Pivot>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

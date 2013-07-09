@@ -1,79 +1,49 @@
 ﻿using Caliburn.Micro;
-using Sheepsteak.Echo.Features.Articles;
-using Sheepsteak.Echo.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Sheepsteak.Echo.Framework;
 using System.Threading.Tasks;
 
 namespace Sheepsteak.Echo.Features.Main
 {
-    public class MainPageViewModel : Screen
+    public class MainPageViewModel : Conductor<IRefreshableScreen>.Collection.OneActive
     {
-        private readonly EchoJsClient echoJsClient;
         private bool isBusy;
-        private readonly INavigationService navigationService;
-        private Article selectedArticle;
+        private readonly LatestViewModel latestViewModel;
+        private readonly TopViewModel topViewModel;
 
-        public MainPageViewModel(INavigationService navigationService, EchoJsClient echoJsClient)
+        public MainPageViewModel(
+            TopViewModel topViewModel,
+            LatestViewModel latestViewModel)
         {
-            this.navigationService = navigationService;
-            this.echoJsClient = echoJsClient;
-
-            this.Articles = new BindableCollection<Article>();
+            this.topViewModel = topViewModel;
+            this.latestViewModel = latestViewModel;
         }
 
-        public BindableCollection<Article> Articles { get; private set; }
-
-        public Article SelectedArticle
+        public bool IsBusy
         {
-            get { return this.selectedArticle; }
-            set
+            get { return this.isBusy; }
+            private set
             {
-                this.selectedArticle = value;
-
-                var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
-                uriBuilder.WithParam(v => v.Article, this.selectedArticle);
-                this.navigationService.Navigate(uriBuilder.BuildUri());
+                this.isBusy = value;
+                this.NotifyOfPropertyChange(() => this.IsBusy);
             }
         }
 
-        protected override async void OnActivate()
+        public async Task RefreshArticles()
         {
-            base.OnActivate();
+            var selectedItem = this.ActiveItem;
 
-            await this.Refresh();
-        }
-
-        private async Task Refresh()
-        {
-            if (this.isBusy)
+            if (selectedItem != null)
             {
-                return;
+                await selectedItem.RefreshArticles();
             }
-
-            this.isBusy = true;
-
-            this.Articles.Clear();
-
-            var articles = await this.echoJsClient.GetTopNews();
-
-            this.Articles.AddRange(articles.ToList());
-
-            this.isBusy = false;
         }
 
-        //private void TopList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    var article = e.AddedItems[0] as Article;
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
 
-        //    var uriString = "/Features/Articles/ArticlePage.xaml?" +
-        //        "id=" + article.Id +
-        //        "&url=" + Uri.EscapeDataString(article.Url) +
-        //        "&title=" + Uri.EscapeDataString(article.Title) +
-        //        "&description=" + Uri.EscapeDataString(article.Description);
-        //    this.NavigationService.Navigate(new Uri(uriString, UriKind.Relative));
-        //}
+            this.Items.Add(this.topViewModel);
+            this.Items.Add(this.latestViewModel);
+        }
     }
 }

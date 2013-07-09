@@ -16,9 +16,38 @@ namespace Sheepsteak.Echo
             this.BaseAddress = new Uri("http://www.echojs.com/api/");
         }
 
+        public async Task<IEnumerable<Article>> GetLatestNews(int start = 0, int count = 32)
+        {
+            HttpResponseMessage response = null;
+
+            response = await this.GetAsync("getnews/latest/" + start + "/" + count);
+
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            var jObject = JObject.Parse(json);
+
+            var articles = (from a in jObject["news"]
+                            select new Article()
+                            {
+                                Id = (int)a["id"],
+                                DownVotes = (int)a["down"],
+                                PostedAt = ConvertFromUnixTimestamp((long)a["ctime"]),
+                                Title = (string)a["title"],
+                                UpVotes = (int)a["up"],
+                                Url = (string)a["url"],
+                                Username = (string)a["username"]
+                            }).ToList();
+
+            return articles;
+        }
+
         public async Task<IEnumerable<Article>> GetTopNews(int start = 0, int count = 32)
         {
-            var response = await this.GetAsync("getnews/top/" + start + "/" + count);
+            HttpResponseMessage response = null;
+
+            response = await this.GetAsync("getnews/top/" + start + "/" + count);
 
             response.EnsureSuccessStatusCode();
 
@@ -47,6 +76,6 @@ namespace Sheepsteak.Echo
             return origin.AddSeconds(timestamp);
         }
 
-      
+
     }
 }

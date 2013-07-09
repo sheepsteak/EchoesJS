@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Caliburn.Micro;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Sheepsteak.Echo.Model;
 using Sheepsteak.Echo.Resources;
@@ -15,13 +16,12 @@ namespace Sheepsteak.Echo.Features.Main
     public partial class MainPage : PhoneApplicationPage
     {
         private bool isRefreshing = false;
-        private ApplicationBarIconButton refreshButton;
+        private AppBarButton refreshButton;
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
@@ -37,13 +37,11 @@ namespace Sheepsteak.Echo.Features.Main
                 if (this.isRefreshing)
                 {
                     this.progressIndicator.IsVisible = true;
-                    this.loadingTextBlock.Visibility = Visibility.Visible;
                     this.refreshButton.IsEnabled = false;
                 }
                 else
                 {
                     this.progressIndicator.IsVisible = false;
-                    this.loadingTextBlock.Visibility = Visibility.Collapsed;
                     this.refreshButton.IsEnabled = true;
                 }
             }
@@ -58,7 +56,9 @@ namespace Sheepsteak.Echo.Features.Main
             this.ApplicationBar.Mode = ApplicationBarMode.Minimized;
 
             // Create a new button and set the text value to the localized string from AppResources.
-            this.refreshButton = new ApplicationBarIconButton(new Uri("/Assets/Images/refresh.png", UriKind.Relative));
+            this.refreshButton = new AppBarButton();
+            this.refreshButton.IconUri = new Uri("/Assets/Images/refresh.png", UriKind.Relative);
+            this.refreshButton.Message = "RefreshArticles";
             this.refreshButton.Text = AppResources.RefreshAppBarButtonText;
             this.ApplicationBar.Buttons.Add(refreshButton);
         }

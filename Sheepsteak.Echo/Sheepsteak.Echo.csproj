@@ -102,7 +102,10 @@
       <DependentUpon>ArticlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Articles\ArticlePageViewModel.cs" />
+    <Compile Include="Features\Main\LatestViewModel.cs" />
     <Compile Include="Features\Main\MainPageViewModel.cs" />
+    <Compile Include="Features\Main\TopViewModel.cs" />
+    <Compile Include="Framework\IRefreshableScreen.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Features\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -120,11 +123,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Assets\Converters\Converters.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Assets\Styles\Colours.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Features\Articles\ArticlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Main\LatestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +150,10 @@
     <Page Include="Assets\Styles\ScrollBars.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Features\Main\TopView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

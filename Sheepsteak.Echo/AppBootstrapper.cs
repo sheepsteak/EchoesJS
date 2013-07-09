@@ -28,6 +28,8 @@ namespace Sheepsteak.Echo
 
             this.container.PerRequest<ArticlePageViewModel>();
             this.container.PerRequest<MainPageViewModel>();
+            this.container.PerRequest<TopViewModel>();
+            this.container.PerRequest<LatestViewModel>();
             this.container.Singleton<EchoJsClient>();
 
             AddCustomConventions();
