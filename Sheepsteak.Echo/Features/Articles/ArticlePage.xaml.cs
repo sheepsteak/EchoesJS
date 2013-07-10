@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Media;
 using Sheepsteak.Echo.Resources;
+using Sheepsteak.Echo.Core;
 
 namespace Sheepsteak.Echo.Features.Articles
 {

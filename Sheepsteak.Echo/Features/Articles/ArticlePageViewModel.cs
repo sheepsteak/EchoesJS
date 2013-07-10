@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using Sheepsteak.Echo.Model;
+using Sheepsteak.Echo.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

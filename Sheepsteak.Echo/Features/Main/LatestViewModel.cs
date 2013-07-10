@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
+using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Features.Articles;
 using Sheepsteak.Echo.Framework;
-using Sheepsteak.Echo.Model;
 using Sheepsteak.Echo.Resources;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,5 +1,6 @@
 using Caliburn.Micro;
 using Microsoft.Phone.Controls;
+using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Features.Articles;
 using Sheepsteak.Echo.Features.Main;
 using System;

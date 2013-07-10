@@ -1,7 +1,6 @@
 ﻿using Caliburn.Micro;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Sheepsteak.Echo.Model;
 using Sheepsteak.Echo.Resources;
 using System;
 using System.Linq;
