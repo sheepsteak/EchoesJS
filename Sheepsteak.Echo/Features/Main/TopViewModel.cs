@@ -38,24 +38,18 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
-        public Article SelectedArticle
-        {
-            get { return this.selectedArticle; }
-            set
-            {
-                this.selectedArticle = value;
-
-                var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
-                uriBuilder.WithParam(v => v.Article, this.selectedArticle);
-                this.navigationService.Navigate(uriBuilder.BuildUri());
-            }
-        }
-
         protected override async void OnActivate()
         {
             base.OnActivate();
 
             await this.RefreshArticles();
+        }
+
+        public void ArticleSelected(Article article)
+        {
+            var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
+            uriBuilder.WithParam(v => v.Article, article);
+            this.navigationService.Navigate(uriBuilder.BuildUri());
         }
 
         public async Task RefreshArticles()

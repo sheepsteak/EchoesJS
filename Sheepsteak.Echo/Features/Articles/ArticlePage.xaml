@@ -30,14 +30,14 @@
             Background="#af1d1d"
             Grid.Row="0">
             <TextBlock
-                x:Name="articleTitle"
+                x:Name="Article_Text"
                 Foreground="White"
                 Margin="24,6,24,0"
                 Text="Article Header"
                 TextTrimming="WordEllipsis"
                 Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock
-                x:Name="descriptionText"
+                x:Name="Article_Description"
                 Foreground="#999"
                 Text="Article Description"
                 TextWrapping="Wrap"
@@ -47,7 +47,7 @@
 
         <!--ContentPanel - place additional content here-->
         <phone:WebBrowser
-            x:Name="webBrowser"
+            x:Name="Article_Url"
             Grid.Row="1" />
 
         <!--<Image

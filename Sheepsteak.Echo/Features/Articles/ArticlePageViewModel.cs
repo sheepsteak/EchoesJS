@@ -10,6 +10,8 @@ namespace Sheepsteak.Echo.Features.Articles
 {
     public class ArticlePageViewModel:Screen
     {
+        private const string readabilityUrl = "http://readability.com/read?url={0}";
+        
         public ArticlePageViewModel()
         {
 

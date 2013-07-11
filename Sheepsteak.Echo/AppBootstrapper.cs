@@ -4,6 +4,7 @@ using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Features.Articles;
 using Sheepsteak.Echo.Features.Main;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Controls;
@@ -113,6 +114,16 @@ namespace Sheepsteak.Echo
 
                     return false;
                 };
+
+            MessageBinder.SpecialValues.Add("$selecteditem", c =>
+            {
+                if (c == null || c.EventArgs == null)
+                    return null;
+                
+                var selectedItemEventArgs = (SelectionChangedEventArgs)c.EventArgs;
+
+                return selectedItemEventArgs.AddedItems.Cast<object>().FirstOrDefault();
+            });
         }
 
         /// <summary>

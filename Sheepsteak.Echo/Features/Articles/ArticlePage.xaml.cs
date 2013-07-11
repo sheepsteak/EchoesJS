@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Windows.Media;
 using Sheepsteak.Echo.Resources;
-using Sheepsteak.Echo.Core;
+using System;
+using System.Windows.Media;
 
 namespace Sheepsteak.Echo.Features.Articles
 {
     public partial class ArticlePage : PhoneApplicationPage
     {
-        private const string readabilityUrl = "http://readability.com/read?url={0}";
-
-        private string articleUrl;
-        private readonly EchoJsClient echoJsClient;
-        private bool inTextView;
         private ApplicationBarIconButton textButton;
 
         public ArticlePage()
@@ -27,23 +15,6 @@ namespace Sheepsteak.Echo.Features.Articles
             InitializeComponent();
 
             this.BuildLocalizedApplicationBar();
-
-            this.echoJsClient = new EchoJsClient();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            string title;
-            string description;
-
-            this.NavigationContext.QueryString.TryGetValue("title", out title);
-            this.articleTitle.Text = title;
-
-            this.NavigationContext.QueryString.TryGetValue("url", out this.articleUrl);
-            this.webBrowser.Source = new Uri(this.articleUrl);
-
-            this.NavigationContext.QueryString.TryGetValue("description", out description);
-            this.descriptionText.Text = description;
         }
 
         private void BuildLocalizedApplicationBar()
@@ -62,21 +33,21 @@ namespace Sheepsteak.Echo.Features.Articles
 
         private void Text_Click(object sender, EventArgs e)
         {
-            if (this.inTextView)
-            {
-                this.webBrowser.Source = new Uri(this.articleUrl);
-                this.textButton.IconUri = new Uri("/Assets/Images/text.png", UriKind.Relative);
-                this.textButton.Text = AppResources.TextAppBarButtonText;
-            }
-            else
-            {
-                var textViewUrl = new Uri(string.Format(readabilityUrl, this.articleUrl));
-                this.webBrowser.Source = textViewUrl;
-                this.textButton.IconUri = new Uri("/Assets/Images/web.png", UriKind.Relative);
-                this.textButton.Text = AppResources.WebAppBarButtonText;
-            }
+            //if (this.inTextView)
+            //{
+            //    this.webBrowser.Source = new Uri(this.articleUrl);
+            //    this.textButton.IconUri = new Uri("/Assets/Images/text.png", UriKind.Relative);
+            //    this.textButton.Text = AppResources.TextAppBarButtonText;
+            //}
+            //else
+            //{
+            //    var textViewUrl = new Uri(string.Format(readabilityUrl, this.articleUrl));
+            //    this.webBrowser.Source = textViewUrl;
+            //    this.textButton.IconUri = new Uri("/Assets/Images/web.png", UriKind.Relative);
+            //    this.textButton.Text = AppResources.WebAppBarButtonText;
+            //}
 
-            this.inTextView = !this.inTextView;
+            //this.inTextView = !this.inTextView;
         }
     }
 }
