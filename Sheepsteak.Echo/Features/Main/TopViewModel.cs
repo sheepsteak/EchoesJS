@@ -10,6 +10,7 @@ namespace Sheepsteak.Echo.Features.Main
 {
     public class TopViewModel : Screen, IRefreshableScreen
     {
+        private readonly ICacheService cacheService;
         private readonly EchoJsClient echoJsClient;
         private bool isBusy;
         private readonly INavigationService navigationService;
@@ -17,9 +18,11 @@ namespace Sheepsteak.Echo.Features.Main
 
         public TopViewModel(
             INavigationService navigationService,
+            ICacheService cacheService,
             EchoJsClient echoJsClient)
         {
             this.navigationService = navigationService;
+            this.cacheService = cacheService;
             this.echoJsClient = echoJsClient;
 
             this.Articles = new BindableCollection<Article>();
@@ -47,8 +50,9 @@ namespace Sheepsteak.Echo.Features.Main
 
         public void ArticleSelected(Article article)
         {
+            this.cacheService.Articles[article.Id] = article;
             var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
-            uriBuilder.WithParam(v => v.Article, article);
+            uriBuilder.WithParam(v => v.ArticleId, article.Id);
             this.navigationService.Navigate(uriBuilder.BuildUri());
         }
 

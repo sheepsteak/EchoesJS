@@ -8,6 +8,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Controls;
+using Sheepsteak.Echo.Framework;
+using Microsoft.Phone.Shell;
 
 namespace Sheepsteak.Echo
 {
@@ -32,6 +34,7 @@ namespace Sheepsteak.Echo
             this.container.PerRequest<MainPageViewModel>();
             this.container.PerRequest<TopViewModel>();
             this.container.PerRequest<LatestViewModel>();
+            this.container.Singleton<ICacheService, CacheService>();
             this.container.Singleton<EchoJsClient>();
 
             AddCustomConventions();
@@ -114,6 +117,9 @@ namespace Sheepsteak.Echo
 
                     return false;
                 };
+
+            ConventionManager.AddElementConvention<ProgressIndicator>(ProgressIndicator.IsVisibleProperty, "ValueProperty", null);
+            ConventionManager.AddElementConvention<WebBrowser>(WebBrowser.SourceProperty, "Source", "LoadCompleted");
 
             MessageBinder.SpecialValues.Add("$selecteditem", c =>
             {

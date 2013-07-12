@@ -104,6 +104,9 @@
     <Compile Include="Features\Main\LatestViewModel.cs" />
     <Compile Include="Features\Main\MainPageViewModel.cs" />
     <Compile Include="Features\Main\TopViewModel.cs" />
+    <Compile Include="Framework\ArticleCache.cs" />
+    <Compile Include="Framework\CacheService.cs" />
+    <Compile Include="Framework\ICacheService.cs" />
     <Compile Include="Framework\IRefreshableScreen.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Features\Main\MainPage.xaml.cs">

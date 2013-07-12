@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -30,10 +31,10 @@
             Background="#af1d1d"
             Grid.Row="0">
             <TextBlock
-                x:Name="Article_Text"
+                x:Name="Article_Title"
                 Foreground="White"
                 Margin="24,6,24,0"
-                Text="Article Header"
+                Text="Article Title"
                 TextTrimming="WordEllipsis"
                 Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock
@@ -41,14 +42,21 @@
                 Foreground="#999"
                 Text="Article Description"
                 TextWrapping="Wrap"
-                Margin="24,0,24,6"
+                Margin="24,6,24,6"
                 Style="{StaticResource PhoneTextSmallStyle}" />
         </StackPanel>
 
+        <ProgressBar
+            IsIndeterminate="True"
+            VerticalAlignment="Top"
+            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
         <!--ContentPanel - place additional content here-->
         <phone:WebBrowser
-            x:Name="Article_Url"
+            x:Name="Url"
+            cal:Message.Attach="[Event Navigating] = [Action Navigating]; [Event Navigated] = [Action Navigated]; [Event NavigationFailed] = [Action Navigated]"
             Grid.Row="1" />
+
 
         <!--<Image
             Source="/Assets/AlignmentGrid.png"
