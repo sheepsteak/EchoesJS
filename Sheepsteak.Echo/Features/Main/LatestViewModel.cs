@@ -13,7 +13,6 @@ namespace Sheepsteak.Echo.Features.Main
         private readonly EchoJsClient echoJsClient;
         private bool isBusy;
         private readonly INavigationService navigationService;
-        private Article selectedArticle;
 
         public LatestViewModel(
             INavigationService navigationService,
@@ -38,7 +37,7 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
-        protected override async void OnActivate()
+        protected async override void OnInitialize()
         {
             base.OnActivate();
 
