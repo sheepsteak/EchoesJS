@@ -5,10 +5,10 @@
         <ResourceDictionary
             Source="Colours.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style
+    <!--<Style
         TargetType="ScrollBar">
         <Setter
             Property="Background"
             Value="{StaticResource Brush.Main}" />
-    </Style>
+    </Style>-->
 </ResourceDictionary>
