@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Framework;
+using Sheepsteak.Echo.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,16 @@ namespace Sheepsteak.Echo.Features.Articles
             }
         }
 
+        public string SwitchViewIconUri
+        {
+            get { return this.inReadabilityView ? "/Assets/Images/web.png" : "/Assets/Images/text.png"; }
+        }
+
+        public string SwitchViewText
+        {
+            get { return this.inReadabilityView ? AppResources.WebAppBarButtonText : AppResources.TextAppBarButtonText; }
+        }
+
         public string Url
         {
             get
@@ -62,25 +73,11 @@ namespace Sheepsteak.Echo.Features.Articles
 
         public void SwitchView()
         {
-            if (this.inReadabilityView)
-            {
-                //this.webBrowser.Source = new Uri(this.articleUrl);
-                //this.textButton.IconUri = new Uri("/Assets/Images/text.png", UriKind.Relative);
-                //this.textButton.Text = AppResources.TextAppBarButtonText;
-            }
-            else
-            {
-                //var textViewUrl = new Uri(string.Format(readabilityUrl, this.articleUrl));
-                //this.webBrowser.Source = textViewUrl;
-                //this.textButton.IconUri = new Uri("/Assets/Images/web.png", UriKind.Relative);
-                //this.textButton.Text = AppResources.WebAppBarButtonText;
-            }
-
             this.inReadabilityView = !this.inReadabilityView;
 
             this.NotifyOfPropertyChange(() => this.Url);
-
-            //this.inTextView = !this.inTextView;
+            this.NotifyOfPropertyChange(() => this.SwitchViewIconUri);
+            this.NotifyOfPropertyChange(() => this.SwitchViewText);
         }
 
         protected override void OnActivate()

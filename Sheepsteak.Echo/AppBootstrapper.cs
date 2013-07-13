@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Windows.Controls;
 using Sheepsteak.Echo.Framework;
 using Microsoft.Phone.Shell;
+using Caliburn.Micro.BindableAppBar;
 
 namespace Sheepsteak.Echo
 {
@@ -121,11 +122,14 @@ namespace Sheepsteak.Echo
             ConventionManager.AddElementConvention<ProgressIndicator>(ProgressIndicator.IsVisibleProperty, "ValueProperty", null);
             ConventionManager.AddElementConvention<WebBrowser>(WebBrowser.SourceProperty, "Source", "LoadCompleted");
 
+            ConventionManager.AddElementConvention<BindableAppBarButton>(Control.IsEnabledProperty, "DataContext", "Click");
+            ConventionManager.AddElementConvention<BindableAppBarMenuItem>(Control.IsEnabledProperty, "DataContext", "Click");
+
             MessageBinder.SpecialValues.Add("$selecteditem", c =>
             {
                 if (c == null || c.EventArgs == null)
                     return null;
-                
+
                 var selectedItemEventArgs = (SelectionChangedEventArgs)c.EventArgs;
 
                 return selectedItemEventArgs.AddedItems.Cast<object>().FirstOrDefault();
