@@ -16,6 +16,7 @@
         <!--Double line list with text wrapping-->
         <phone:LongListSelector
             x:Name="Articles"
+            cal:Message.Attach="[Event SelectionChanged] = [ArticleSelected($selecteditem)]"
             Margin="0,0,-12,0"
             ScrollViewer.VerticalScrollBarVisibility="Auto">
             <phone:LongListSelector.ItemTemplate>

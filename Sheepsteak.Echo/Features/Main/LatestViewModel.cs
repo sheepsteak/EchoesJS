@@ -62,8 +62,9 @@ namespace Sheepsteak.Echo.Features.Main
 
         public void ArticleSelected(Article article)
         {
+            this.cacheService.Articles[article.Id] = article;
             var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
-            uriBuilder.WithParam(v => v.Article, article);
+            uriBuilder.WithParam(v => v.ArticleId, article.Id);
             this.navigationService.Navigate(uriBuilder.BuildUri());
         }
 
