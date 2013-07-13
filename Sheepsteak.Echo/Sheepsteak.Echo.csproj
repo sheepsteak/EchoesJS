@@ -108,6 +108,8 @@
     <Compile Include="Framework\CacheService.cs" />
     <Compile Include="Framework\ICacheService.cs" />
     <Compile Include="Framework\IRefreshableScreen.cs" />
+    <Compile Include="Framework\Result.cs" />
+    <Compile Include="Framework\ShowMessageBoxResult.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Features\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

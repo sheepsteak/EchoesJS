@@ -43,5 +43,12 @@
             Text="Just a moment…"
             VerticalAlignment="Top"
             Visibility="{Binding IsRefreshing, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBlock
+            Foreground="#af1d1d"
+            Style="{StaticResource PhoneTextLargeStyle}"
+            Text="We can't get any articles at the moment…"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Visibility="{Binding ShowFailureMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </UserControl>

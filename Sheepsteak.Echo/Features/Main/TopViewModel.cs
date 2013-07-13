@@ -3,7 +3,10 @@ using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Features.Articles;
 using Sheepsteak.Echo.Framework;
 using Sheepsteak.Echo.Resources;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Sheepsteak.Echo.Features.Main
@@ -14,6 +17,7 @@ namespace Sheepsteak.Echo.Features.Main
         private readonly EchoJsClient echoJsClient;
         private bool isRefreshing;
         private readonly INavigationService navigationService;
+        private bool showFailureMessage;
 
         public TopViewModel(
             INavigationService navigationService,
@@ -40,6 +44,16 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
+        public bool ShowFailureMessage
+        {
+            get { return this.showFailureMessage; }
+            private set
+            {
+                this.showFailureMessage = value;
+                this.NotifyOfPropertyChange(() => this.ShowFailureMessage);
+            }
+        }
+
         protected async override void OnInitialize()
         {
             base.OnInitialize();
@@ -62,16 +76,40 @@ namespace Sheepsteak.Echo.Features.Main
                 return;
             }
 
+            this.ShowFailureMessage = false;
             this.IsRefreshing = true;
 
             this.Articles.Clear();
 
-            var articles = await this.echoJsClient.GetTopNews();
+            IEnumerable<Article> articles = null;
 
-            this.Articles.AddRange(articles.ToList());
+            bool showFailMessage = false;
+            try
+            {
+                articles = await this.echoJsClient.GetTopNews();
+            }
+            catch (HttpRequestException)
+            {
+                showFailMessage = true;
+            }
 
             this.IsRefreshing = false;
-        }
 
+            if (showFailMessage)
+            {
+                await Task.Delay(50);
+
+                var showMessageBoxResult = new ShowMessageBoxResult(
+                    "There was an error trying to get the top articles.",
+                    "Echo");
+
+                await showMessageBoxResult.ExecuteAsync();
+                this.ShowFailureMessage = true;
+            }
+            else
+            {
+                this.Articles.AddRange(articles.ToList());
+            }
+        }
     }
 }
