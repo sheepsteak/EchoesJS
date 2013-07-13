@@ -43,6 +43,6 @@
             Style="{StaticResource PhoneTextLargeStyle}"
             Text="Just a moment…"
             VerticalAlignment="Top"
-            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsRefreshing, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </UserControl>

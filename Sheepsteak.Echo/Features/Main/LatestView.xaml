@@ -39,10 +39,9 @@
         </phone:LongListSelector>
         <TextBlock
             Foreground="#af1d1d"
-            HorizontalAlignment="Center"
-            Style="{StaticResource PhoneTextNormalStyle}"
-            Text="Loading..."
-            VerticalAlignment="Center"
-            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Style="{StaticResource PhoneTextLargeStyle}"
+            Text="Just a moment…"
+            VerticalAlignment="Top"
+            Visibility="{Binding IsRefreshing, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </UserControl>
