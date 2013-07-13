@@ -5,6 +5,8 @@ namespace Sheepsteak.Echo.Framework
 {
     public interface IRefreshableScreen : IScreen
     {
+        bool IsRefreshing { get; }
+
         Task RefreshArticles();
     }
 }

@@ -1,12 +1,12 @@
 ﻿using Caliburn.Micro;
 using Sheepsteak.Echo.Framework;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace Sheepsteak.Echo.Features.Main
 {
     public class MainPageViewModel : Conductor<IRefreshableScreen>.Collection.OneActive
     {
-        private bool isBusy;
         private readonly LatestViewModel latestViewModel;
         private readonly TopViewModel topViewModel;
 
@@ -20,12 +20,7 @@ namespace Sheepsteak.Echo.Features.Main
 
         public bool IsBusy
         {
-            get { return this.isBusy; }
-            private set
-            {
-                this.isBusy = value;
-                this.NotifyOfPropertyChange(() => this.IsBusy);
-            }
+            get { return this.ActiveItem != null ? this.ActiveItem.IsRefreshing : false; }
         }
 
         public async Task RefreshArticles()
@@ -38,12 +33,47 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
+        protected override void ChangeActiveItem(IRefreshableScreen newItem, bool closePrevious)
+        {
+            this.UnlistenToActiveItem();
+
+            base.ChangeActiveItem(newItem, closePrevious);
+
+            this.ListenToActiveItem();
+
+            this.NotifyOfPropertyChange(() => this.IsBusy);
+        }
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
 
             this.Items.Add(this.topViewModel);
             this.Items.Add(this.latestViewModel);
+        }
+
+        private void ListenToActiveItem()
+        {
+            if (this.ActiveItem != null)
+            {
+                this.ActiveItem.PropertyChanged += this.ActiveItem_PropertyChanged;
+            }
+        }
+        
+        private void UnlistenToActiveItem()
+        {
+            if (this.ActiveItem != null)
+            {
+                this.ActiveItem.PropertyChanged -= this.ActiveItem_PropertyChanged;
+            }
+        }
+
+        private void ActiveItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsRefreshing")
+            {
+                this.NotifyOfPropertyChange(() => this.IsBusy);
+            }
         }
     }
 }

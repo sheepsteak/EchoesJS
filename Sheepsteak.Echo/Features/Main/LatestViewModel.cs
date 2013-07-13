@@ -11,7 +11,7 @@ namespace Sheepsteak.Echo.Features.Main
     public class LatestViewModel : Screen, IRefreshableScreen
     {
         private readonly EchoJsClient echoJsClient;
-        private bool isBusy;
+        private bool isRefreshing;
         private readonly INavigationService navigationService;
 
         public LatestViewModel(
@@ -27,13 +27,13 @@ namespace Sheepsteak.Echo.Features.Main
 
         public BindableCollection<Article> Articles { get; private set; }
 
-        public bool IsBusy
+        public bool IsRefreshing
         {
-            get { return this.isBusy; }
+            get { return this.isRefreshing; }
             set
             {
-                this.isBusy = value;
-                this.NotifyOfPropertyChange(() => this.IsBusy);
+                this.isRefreshing = value;
+                this.NotifyOfPropertyChange(() => this.IsRefreshing);
             }
         }
 
@@ -53,12 +53,12 @@ namespace Sheepsteak.Echo.Features.Main
         
         public async Task RefreshArticles()
         {
-            if (this.IsBusy)
+            if (this.IsRefreshing)
             {
                 return;
             }
 
-            this.IsBusy = true;
+            this.IsRefreshing = true;
 
             this.Articles.Clear();
 
@@ -66,7 +66,7 @@ namespace Sheepsteak.Echo.Features.Main
 
             this.Articles.AddRange(articles.ToList());
 
-            this.IsBusy = false;
+            this.IsRefreshing = false;
         }
 
     }

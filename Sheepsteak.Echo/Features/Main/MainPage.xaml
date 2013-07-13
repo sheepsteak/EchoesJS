@@ -16,8 +16,9 @@
     shell:SystemTray.IsVisible="True">
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator
-            x:Name="progressIndicator"
-            IsIndeterminate="True" />
+            IsIndeterminate="True"
+            IsVisible="{Binding IsBusy}"
+            Text="Getting articles…" />
     </shell:SystemTray.ProgressIndicator>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid
