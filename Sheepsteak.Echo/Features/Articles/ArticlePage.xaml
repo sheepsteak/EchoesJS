@@ -15,6 +15,11 @@
     Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False">
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator
+            IsIndeterminate="True"
+            IsVisible="{Binding IsBusy}" />
+    </shell:SystemTray.ProgressIndicator>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid
@@ -43,11 +48,6 @@
                 Margin="24,6,24,6"
                 Style="{StaticResource PhoneTextSmallStyle}" />
         </StackPanel>-->
-
-        <ProgressBar
-            IsIndeterminate="True"
-            VerticalAlignment="Top"
-            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
         <!--ContentPanel - place additional content here-->
         <phone:WebBrowser
