@@ -24,8 +24,8 @@ namespace Sheepsteak.Echo.Features.Main
         private void BuildLocalizedApplicationBar()
         {
             this.ApplicationBar = new ApplicationBar();
-            this.ApplicationBar.BackgroundColor = Color.FromArgb(255, 175, 29, 29);
-            this.ApplicationBar.ForegroundColor = Colors.White;
+            //this.ApplicationBar.BackgroundColor = Color.FromArgb(255, 175, 29, 29);
+            //this.ApplicationBar.ForegroundColor = Colors.White;
             this.ApplicationBar.Mode = ApplicationBarMode.Minimized;
 
             // Create a new button and set the text value to the localized string from AppResources.

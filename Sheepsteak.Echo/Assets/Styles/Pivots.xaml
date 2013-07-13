@@ -7,7 +7,7 @@
         <ResourceDictionary
             Source="Colours.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style
+    <!--<Style
         x:Key="Pivot.Style"
         TargetType="phone:Pivot">
         <Setter
@@ -69,5 +69,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 </ResourceDictionary>

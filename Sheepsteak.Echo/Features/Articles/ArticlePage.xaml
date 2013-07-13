@@ -28,18 +28,15 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel
-            Background="#af1d1d"
             Grid.Row="0">
             <TextBlock
                 x:Name="Article_Title"
-                Foreground="White"
                 Margin="24,6,24,0"
                 Text="Article Title"
                 TextTrimming="WordEllipsis"
                 Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock
                 x:Name="Article_Description"
-                Foreground="#999"
                 Text="Article Description"
                 TextWrapping="Wrap"
                 Margin="24,6,24,6"
