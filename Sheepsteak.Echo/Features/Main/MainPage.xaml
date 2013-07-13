@@ -64,8 +64,7 @@
             Grid.Row="0"
             IsHitTestVisible="False" />-->
         
-        <bab:BindableAppBar
-            Mode="Minimized">
+        <bab:BindableAppBar>
             <bab:BindableAppBarButton
                 x:Name="RefreshArticles"
                 IconUri="/Assets/Images/refresh.png"

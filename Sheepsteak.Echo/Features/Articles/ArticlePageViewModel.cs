@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Microsoft.Phone.Tasks;
 using Sheepsteak.Echo.Core;
 using Sheepsteak.Echo.Framework;
 using Sheepsteak.Echo.Resources;
@@ -17,10 +18,14 @@ namespace Sheepsteak.Echo.Features.Articles
         private bool isBusy;
 
         private readonly ICacheService cacheService;
+        private readonly IEventAggregator eventAggregator;
 
-        public ArticlePageViewModel(ICacheService cacheService)
+        public ArticlePageViewModel(
+            ICacheService cacheService,
+            IEventAggregator eventAggregator)
         {
             this.cacheService = cacheService;
+            this.eventAggregator = eventAggregator;
         }
 
         public int ArticleId { get; set; }
@@ -69,6 +74,14 @@ namespace Sheepsteak.Echo.Features.Articles
         public void Navigating()
         {
             this.IsBusy = true;
+        }
+
+        public void OpenInBrowser()
+        {
+            this.eventAggregator.RequestTask<WebBrowserTask>(task =>
+            {
+                task.Uri = new Uri(this.Article.Url);
+            });
         }
 
         public void SwitchView()

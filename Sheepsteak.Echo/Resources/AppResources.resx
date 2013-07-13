@@ -152,4 +152,7 @@
   <data name="WebAppBarButtonText" xml:space="preserve">
     <value>web</value>
   </data>
+  <data name="OpenInBrowserAppBarMenuText" xml:space="preserve">
+    <value>open in browser</value>
+  </data>
 </root>

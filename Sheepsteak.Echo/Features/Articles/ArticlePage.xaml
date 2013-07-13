@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel
+        <!--<StackPanel
             Grid.Row="0">
             <TextBlock
                 x:Name="Article_Title"
@@ -42,7 +42,7 @@
                 TextWrapping="Wrap"
                 Margin="24,6,24,6"
                 Style="{StaticResource PhoneTextSmallStyle}" />
-        </StackPanel>
+        </StackPanel>-->
 
         <ProgressBar
             IsIndeterminate="True"
@@ -65,12 +65,14 @@
             Grid.RowSpan="2"
             IsHitTestVisible="False" />-->
 
-        <bab:BindableAppBar
-            Mode="Minimized">
+        <bab:BindableAppBar>
             <bab:BindableAppBarButton
                 x:Name="SwitchView"
                 IconUri="{Binding SwitchViewIconUri}"
                 Text="{Binding SwitchViewText}" />
+            <bab:BindableAppBarMenuItem
+                x:Name="OpenInBrowser"
+                Text="{Binding LocalizedResources.OpenInBrowserAppBarMenuText, Source={StaticResource LocalizedStrings}}" />
         </bab:BindableAppBar>
 
     </Grid>
