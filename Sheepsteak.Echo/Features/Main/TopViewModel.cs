@@ -92,6 +92,10 @@ namespace Sheepsteak.Echo.Features.Main
             {
                 showFailMessage = true;
             }
+            catch (UnsupportedMediaTypeException e)
+            {
+                showFailMessage = true;
+            }
 
             this.IsRefreshing = false;
 
