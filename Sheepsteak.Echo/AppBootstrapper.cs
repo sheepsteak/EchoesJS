@@ -62,16 +62,18 @@ namespace Sheepsteak.Echo
 
         private static void AddCustomConventions()
         {
-            ConventionManager.AddElementConvention<LongListSelector>(LongListSelector.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
+            ConventionManager.AddElementConvention<Controls.LongListSelector>(Controls.LongListSelector.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
                 (viewModelType, path, property, element, convention) =>
                 {
                     if (!ConventionManager.SetBindingWithoutBindingOrValueOverwrite(
-                        viewModelType, path, property, element, convention, LongListSelector.ItemsSourceProperty))
+                        viewModelType, path, property, element, convention, Controls.LongListSelector.ItemsSourceProperty))
                     {
                         return false;
                     }
 
-                    ApplyLongListSelectorItemTemplate((LongListSelector)element, property);
+                    ApplyLongListSelectorItemTemplate((Controls.LongListSelector)element, property);
+                    ConventionManager
+                        .ConfigureSelectedItem(element, Controls.LongListSelector.SelectedItemProperty, viewModelType, path);
 
                     return true;
                     //if (ConventionManager
@@ -141,7 +143,7 @@ namespace Sheepsteak.Echo
         /// </summary>
         /// <param name="itemsControl">The items control.</param>
         /// <param name="property">The collection property.</param>
-        private static void ApplyLongListSelectorItemTemplate(LongListSelector longlistSelector, PropertyInfo property)
+        private static void ApplyLongListSelectorItemTemplate(Controls.LongListSelector longlistSelector, PropertyInfo property)
         {
             if (longlistSelector.ItemTemplate != null)
             {

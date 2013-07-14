@@ -3,7 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:controls="clr-namespace:Sheepsteak.Echo.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactions="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:framework="clr-namespace:Sheepsteak.Echo.Framework"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     mc:Ignorable="d"
@@ -14,12 +17,11 @@
     d:DesignWidth="468">
     <Grid>
         <!--Double line list with text wrapping-->
-        <phone:LongListSelector
+        <controls:LongListSelector
             x:Name="Articles"
-            cal:Message.Attach="[Event SelectionChanged] = [ArticleSelected($selecteditem)]"
             Margin="0,0,-12,0"
             ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <phone:LongListSelector.ItemTemplate>
+            <controls:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <StackPanel
                         Margin="0,0,0,17">
@@ -34,8 +36,14 @@
                             Style="{StaticResource PhoneTextSubtleStyle}" />
                     </StackPanel>
                 </DataTemplate>
-            </phone:LongListSelector.ItemTemplate>
-        </phone:LongListSelector>
+            </controls:LongListSelector.ItemTemplate>
+            <interactions:Interaction.Triggers>
+                <framework:LongListSelectorInfiniteScrollingTrigger>
+                    <cal:ActionMessage
+                        MethodName="LoadMore" />
+                </framework:LongListSelectorInfiniteScrollingTrigger>
+            </interactions:Interaction.Triggers>
+        </controls:LongListSelector>
         <TextBlock
             Foreground="{StaticResource PhoneSubtleBrush}"
             Style="{StaticResource PhoneTextLargeStyle}"

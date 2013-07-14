@@ -12,10 +12,12 @@ namespace Sheepsteak.Echo.Features.Main
 {
     public class LatestViewModel : Screen, IRefreshableScreen
     {
+        private const int offsetLimit = 5;
         private readonly ICacheService cacheService;
         private readonly EchoJsClient echoJsClient;
         private bool isRefreshing;
         private readonly INavigationService navigationService;
+        private Article selectedArticle;
         private bool showFailureMessage;
 
         public LatestViewModel(
@@ -43,6 +45,22 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
 
+        public Article SelectedArticle
+        {
+            get { return this.selectedArticle; }
+            set
+            {
+                this.selectedArticle = value;
+
+                if (this.selectedArticle != null)
+                {
+                    this.NavigateToArticlePage(this.selectedArticle);
+                }
+
+                this.NotifyOfPropertyChange(() => this.SelectedArticle);
+            }
+        }
+        
         public bool ShowFailureMessage
         {
             get { return this.showFailureMessage; }
@@ -53,21 +71,6 @@ namespace Sheepsteak.Echo.Features.Main
             }
         }
         
-        protected async override void OnInitialize()
-        {
-            base.OnActivate();
-
-            await this.RefreshArticles();
-        }
-
-        public void ArticleSelected(Article article)
-        {
-            this.cacheService.Articles[article.Id] = article;
-            var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
-            uriBuilder.WithParam(v => v.ArticleId, article.Id);
-            this.navigationService.Navigate(uriBuilder.BuildUri());
-        }
-
         public async Task RefreshArticles()
         {
             if (this.IsRefreshing)
@@ -113,6 +116,28 @@ namespace Sheepsteak.Echo.Features.Main
             {
                 this.Articles.AddRange(articles.ToList());
             }
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+
+            this.SelectedArticle = null;
+        }
+
+        protected async override void OnInitialize()
+        {
+            base.OnInitialize();
+
+            await this.RefreshArticles();
+        }
+
+        private void NavigateToArticlePage(Article article)
+        {
+            this.cacheService.Articles[article.Id] = article;
+            var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
+            uriBuilder.WithParam(v => v.ArticleId, article.Id);
+            this.navigationService.Navigate(uriBuilder.BuildUri());
         }
     }
 }
