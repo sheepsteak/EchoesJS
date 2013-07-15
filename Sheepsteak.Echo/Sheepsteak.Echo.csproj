@@ -101,6 +101,10 @@
     <Compile Include="Features\Main\LatestViewModel.cs" />
     <Compile Include="Features\Main\MainPageViewModel.cs" />
     <Compile Include="Features\Main\TopViewModel.cs" />
+    <Compile Include="Features\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Settings\SettingsPageViewModel.cs" />
     <Compile Include="Framework\ArticleCache.cs" />
     <Compile Include="Framework\CacheService.cs" />
     <Compile Include="Framework\ICacheService.cs" />
@@ -154,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -168,6 +176,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\settings.png" />
     <Content Include="Assets\Images\web.png" />
     <Content Include="Assets\Images\text.png" />
     <Content Include="Assets\Images\refresh.png" />

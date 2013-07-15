@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using Sheepsteak.Echo.Framework;
 using Microsoft.Phone.Shell;
 using Caliburn.Micro.BindableAppBar;
+using Sheepsteak.Echo.Features.Settings;
 
 namespace Sheepsteak.Echo
 {
@@ -35,6 +36,7 @@ namespace Sheepsteak.Echo
             this.container.PerRequest<MainPageViewModel>();
             this.container.PerRequest<TopViewModel>();
             this.container.PerRequest<LatestViewModel>();
+            this.container.PerRequest<SettingsPageViewModel>();
             this.container.Singleton<ICacheService, CacheService>();
             this.container.Singleton<EchoJsClient>();
 

@@ -155,4 +155,10 @@
   <data name="OpenInBrowserAppBarMenuText" xml:space="preserve">
     <value>open in browser</value>
   </data>
+  <data name="SettingsAppBarButtonText" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>settings</value>
+  </data>
 </root>

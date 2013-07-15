@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Sheepsteak.Echo.Features.Settings;
 using Sheepsteak.Echo.Framework;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace Sheepsteak.Echo.Features.Main
     public class MainPageViewModel : Conductor<IRefreshableScreen>.Collection.OneActive
     {
         private readonly LatestViewModel latestViewModel;
-        private readonly TopViewModel topViewModel;
+          private readonly INavigationService navigationService;
+      private readonly TopViewModel topViewModel;
 
         public MainPageViewModel(
+            INavigationService navigationService,
             TopViewModel topViewModel,
             LatestViewModel latestViewModel)
         {
+       this.navigationService= navigationService;
             this.topViewModel = topViewModel;
             this.latestViewModel = latestViewModel;
         }
@@ -31,6 +35,11 @@ namespace Sheepsteak.Echo.Features.Main
             {
                 await selectedItem.RefreshArticles();
             }
+        }
+
+        public void Settings()
+        {
+            this.navigationService.UriFor<SettingsPageViewModel>().Navigate();
         }
 
         protected override void ChangeActiveItem(IRefreshableScreen newItem, bool closePrevious)
