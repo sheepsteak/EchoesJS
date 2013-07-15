@@ -36,7 +36,7 @@
                 Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" />
             <TextBlock
                 Text="{Binding LocalizedResources.SettingsPageTitle, Source={StaticResource LocalizedStrings}}"
-                Margin="9,-12,0,0"
+                Margin="9,-10,0,0"
                 Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
 
