@@ -14,7 +14,7 @@ namespace Sheepsteak.Echo.Core
             this.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<IEnumerable<Article>> GetLatestNews(int start = 0, int count = 32)
+        public async Task<IEnumerable<Article>> GetLatestNews(int start = 0, int count = 20)
         {
             HttpResponseMessage response = null;
 
@@ -26,7 +26,7 @@ namespace Sheepsteak.Echo.Core
             return latest.Articles;
         }
 
-        public async Task<IEnumerable<Article>> GetTopNews(int start = 0, int count = 32)
+        public async Task<IEnumerable<Article>> GetTopNews(int start = 0, int count = 20)
         {
             HttpResponseMessage response = null;
 
