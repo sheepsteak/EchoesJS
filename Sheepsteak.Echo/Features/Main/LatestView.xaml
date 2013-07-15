@@ -40,7 +40,10 @@
             <interactions:Interaction.Triggers>
                 <framework:LongListSelectorInfiniteScrollingTrigger>
                     <cal:ActionMessage
-                        MethodName="LoadMore" />
+                        MethodName="LoadMore">
+                        <cal:Parameter
+                            Value="$source" />
+                    </cal:ActionMessage>
                 </framework:LongListSelectorInfiniteScrollingTrigger>
             </interactions:Interaction.Triggers>
         </controls:LongListSelector>
@@ -49,7 +52,7 @@
             Style="{StaticResource PhoneTextLargeStyle}"
             Text="Just a moment…"
             VerticalAlignment="Top"
-            Visibility="{Binding IsRefreshing, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding ShowLoadingMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <TextBlock
             Foreground="{StaticResource PhoneSubtleBrush}"
             Style="{StaticResource PhoneTextLargeStyle}"

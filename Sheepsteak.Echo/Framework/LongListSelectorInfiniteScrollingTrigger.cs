@@ -1,5 +1,4 @@
 ﻿using Microsoft.Phone.Controls;
-using System;
 using System.Windows;
 using System.Windows.Interactivity;
 
@@ -8,7 +7,6 @@ namespace Sheepsteak.Echo.Framework
     public class LongListSelectorInfiniteScrollingTrigger : TriggerBase<LongListSelector>
     {
         public static readonly DependencyProperty IsLoadingProperty;
-        public static readonly DependencyProperty OffsetProperty;
 
         public bool IsLoading
         {
@@ -16,16 +14,9 @@ namespace Sheepsteak.Echo.Framework
             set { SetValue(IsLoadingProperty, value); }
         }
 
-        public int Offset
-        {
-            get { return (int)GetValue(OffsetProperty); }
-            set { SetValue(OffsetProperty, value); }
-        }
-
         static LongListSelectorInfiniteScrollingTrigger()
         {
             IsLoadingProperty = DependencyProperty.Register("IsLoading", typeof(bool), typeof(LongListSelectorInfiniteScrollingTrigger), new PropertyMetadata(false));
-            OffsetProperty = DependencyProperty.Register("Offset", typeof(int), typeof(LongListSelectorInfiniteScrollingTrigger), new PropertyMetadata(5));
         }
 
         protected override void OnAttached()
@@ -35,33 +26,21 @@ namespace Sheepsteak.Echo.Framework
             this.AssociatedObject.ItemRealized += AssociatedObject_ItemRealized;
         }
 
-        void AssociatedObject_ItemRealized(object sender, ItemRealizationEventArgs e)
+        private void AssociatedObject_ItemRealized(object sender, ItemRealizationEventArgs e)
         {
             if (this.AssociatedObject.ItemsSource == null)
             {
                 return;
             }
 
-            var currentCount = this.AssociatedObject.ItemsSource.Count;
+            var item = e.Container.Content;
+            var items = this.AssociatedObject.ItemsSource;
+            var index = items.IndexOf(item);
 
-            if (currentCount >= this.Offset && e.ItemKind == LongListSelectorItemKind.Item)
+            if (!this.IsLoading && items.Count - index <= 1)
             {
-                if (e.Container.Content.Equals(this.AssociatedObject.ItemsSource[currentCount - this.Offset]))
-                {
-                    this.InvokeActions(null);
-                }
+                this.InvokeActions(null);
             }
         }
-
-        //protected override string GetEventName()
-        //{
-        //    return "ItemRealized";
-        //}
-
-        //protected override void OnEvent(EventArgs eventArgs)
-        //{
-        //   // base.OnEvent(eventArgs);
-
-        //}
     }
 }

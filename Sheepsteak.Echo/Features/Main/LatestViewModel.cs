@@ -12,7 +12,6 @@ namespace Sheepsteak.Echo.Features.Main
 {
     public class LatestViewModel : Screen, IRefreshableScreen
     {
-        private const int offsetLimit = 5;
         private readonly ICacheService cacheService;
         private readonly EchoJsClient echoJsClient;
         private bool isRefreshing;
@@ -42,6 +41,7 @@ namespace Sheepsteak.Echo.Features.Main
             {
                 this.isRefreshing = value;
                 this.NotifyOfPropertyChange(() => this.IsRefreshing);
+                this.NotifyOfPropertyChange(() => this.ShowLoadingMessage);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Sheepsteak.Echo.Features.Main
                 this.NotifyOfPropertyChange(() => this.SelectedArticle);
             }
         }
-        
+
         public bool ShowFailureMessage
         {
             get { return this.showFailureMessage; }
@@ -70,7 +70,57 @@ namespace Sheepsteak.Echo.Features.Main
                 this.NotifyOfPropertyChange(() => this.ShowFailureMessage);
             }
         }
-        
+
+        public bool ShowLoadingMessage
+        {
+            get { return this.IsRefreshing && this.Articles.Count == 0; }
+        }
+
+        public async Task LoadMore(Sheepsteak.Echo.Controls.LongListSelector element)
+        {
+            if (this.IsRefreshing)
+            {
+                return;
+            }
+
+            this.IsRefreshing = true;
+
+            IEnumerable<Article> articles = null;
+            bool showFailMessage = false;
+            try
+            {
+                articles = await this.echoJsClient.GetLatestNews(this.Articles.Count);
+            }
+            catch (HttpRequestException)
+            {
+                showFailMessage = true;
+            }
+            catch (UnsupportedMediaTypeException e)
+            {
+                showFailMessage = true;
+            }
+
+            this.IsRefreshing = false;
+
+            if (showFailMessage)
+            {
+                await Task.Delay(50);
+
+                var showMessageBoxResult = new ShowMessageBoxResult(
+                    "There was an error trying to get the top articles.",
+                    "Echo");
+
+                await showMessageBoxResult.ExecuteAsync();
+            }
+            else
+            {
+                foreach (var article in articles)
+                {
+                    this.Articles.Add(article);
+                }
+            }
+        }
+
         public async Task RefreshArticles()
         {
             if (this.IsRefreshing)
@@ -79,9 +129,8 @@ namespace Sheepsteak.Echo.Features.Main
             }
 
             this.ShowFailureMessage = false;
-            this.IsRefreshing = true;
-
             this.Articles.Clear();
+            this.IsRefreshing = true;
 
             IEnumerable<Article> articles = null;
 
@@ -106,7 +155,7 @@ namespace Sheepsteak.Echo.Features.Main
                 await Task.Delay(50);
 
                 var showMessageBoxResult = new ShowMessageBoxResult(
-                    "There was an error trying to get the latest articles.",
+                    "There was an error trying to get the top articles.",
                     "Echo");
 
                 await showMessageBoxResult.ExecuteAsync();
