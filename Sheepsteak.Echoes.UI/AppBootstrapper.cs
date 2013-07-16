@@ -33,6 +33,7 @@ namespace Sheepsteak.Echoes.UI
             }
 
             this.container.PerRequest<ArticlePageViewModel>();
+            this.container.PerRequest<CommentsPageViewModel>();
             this.container.PerRequest<MainPageViewModel>();
             this.container.PerRequest<TopViewModel>();
             this.container.PerRequest<LatestViewModel>();

@@ -161,4 +161,7 @@
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>settings</value>
   </data>
+  <data name="CommentsPageTitle" xml:space="preserve">
+    <value>comments</value>
+  </data>
 </root>

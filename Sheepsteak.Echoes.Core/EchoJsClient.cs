@@ -14,6 +14,18 @@ namespace Sheepsteak.Echoes.Core
             this.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        public async Task<IEnumerable<Comment>> GetCommentsForArticle(int articleId)
+        {
+            HttpResponseMessage response = null;
+
+            response = await this.GetAsync("getcomments/" + articleId);
+
+            response.EnsureSuccessStatusCode();
+
+            var latest = await response.Content.ReadAsAsync<CommentsResponse>();
+            return latest.Comments;
+        }
+
         public async Task<IEnumerable<Article>> GetLatestNews(int start = 0, int count = 20)
         {
             HttpResponseMessage response = null;

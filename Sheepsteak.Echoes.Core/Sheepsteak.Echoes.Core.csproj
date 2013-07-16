@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="CommentsResponse.cs" />
     <Compile Include="CTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="EchoJsClient.cs" />
     <Compile Include="DateTimeToNaturalTime.cs" />

@@ -70,6 +70,10 @@
                 x:Name="SwitchView"
                 IconUri="{Binding SwitchViewIconUri}"
                 Text="{Binding SwitchViewText}" />
+            <bab:BindableAppBarButton
+                x:Name="ShowComments"
+                IconUri="{Binding SwitchViewIconUri}"
+                Text="comments" />
             <bab:BindableAppBarMenuItem
                 x:Name="OpenInBrowser"
                 Text="{Binding LocalizedResources.OpenInBrowserAppBarMenuText, Source={StaticResource LocalizedStrings}}" />

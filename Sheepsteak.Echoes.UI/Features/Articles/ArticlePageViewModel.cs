@@ -19,13 +19,16 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
         private readonly ICacheService cacheService;
         private readonly IEventAggregator eventAggregator;
+        private readonly INavigationService navigationService;
 
         public ArticlePageViewModel(
             ICacheService cacheService,
-            IEventAggregator eventAggregator)
+            IEventAggregator eventAggregator,
+            INavigationService navigationService)
         {
             this.cacheService = cacheService;
             this.eventAggregator = eventAggregator;
+            this.navigationService = navigationService;
         }
 
         public int ArticleId { get; set; }
@@ -82,6 +85,12 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
             {
                 task.Uri = new Uri(this.Article.Url);
             });
+        }
+
+        public void ShowComments()
+        {
+            var uriBuilder = this.navigationService.UriFor<CommentsPageViewModel>();
+            uriBuilder.WithParam(v => v.ArticleId, this.ArticleId).Navigate();
         }
 
         public void SwitchView()

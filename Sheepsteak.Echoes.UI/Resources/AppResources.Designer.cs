@@ -88,6 +88,15 @@ namespace Sheepsteak.Echoes.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to comments.
+        /// </summary>
+        public static string CommentsPageTitle {
+            get {
+                return ResourceManager.GetString("CommentsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to latest.
         /// </summary>
         public static string LatestPivotTitle {
