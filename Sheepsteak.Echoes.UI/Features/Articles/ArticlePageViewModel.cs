@@ -89,8 +89,10 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
         public void ShowComments()
         {
-            var uriBuilder = this.navigationService.UriFor<CommentsPageViewModel>();
-            uriBuilder.WithParam(v => v.ArticleId, this.ArticleId).Navigate();
+            this.navigationService.UriFor<CommentsPageViewModel>()
+                .WithParam(c => c.ArticleId, this.ArticleId)
+                .WithParam(c => c.ArticleTitle, this.Article.Title)
+                .Navigate();
         }
 
         public void SwitchView()

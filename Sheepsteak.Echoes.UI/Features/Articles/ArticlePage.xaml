@@ -72,7 +72,7 @@
                 Text="{Binding SwitchViewText}" />
             <bab:BindableAppBarButton
                 x:Name="ShowComments"
-                IconUri="{Binding SwitchViewIconUri}"
+                IconUri="Assets/Images/chat.png"
                 Text="comments" />
             <bab:BindableAppBarMenuItem
                 x:Name="OpenInBrowser"

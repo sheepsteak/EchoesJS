@@ -14,6 +14,11 @@
     Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator
+            IsIndeterminate="True"
+            IsVisible="{Binding IsBusy}" />
+    </shell:SystemTray.ProgressIndicator>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid
@@ -31,8 +36,11 @@
             Grid.Row="0"
             Margin="12,17,0,28">
             <TextBlock
-                Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-                Style="{StaticResource PhoneTextNormalStyle}" />
+                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                FontSize="{StaticResource PhoneFontSizeMedium}"
+                Margin="12,0,0,0"
+                Style="{StaticResource PhoneTextNormalStyle}"
+                Text="{Binding ArticleTitle, Converter={StaticResource StringToUpperCaseConverter}}" />
             <TextBlock
                 Text="{Binding LocalizedResources.CommentsPageTitle, Source={StaticResource LocalizedStrings}}"
                 Margin="9,-7,0,0"
@@ -54,7 +62,7 @@
                             Margin="0,0,0,17">
                             <TextBlock
                                 Text="{Binding Username}"
-                                Style="{StaticResource PhoneTextLargeStyle}"  />
+                                Style="{StaticResource PhoneTextLargeStyle}" />
                             <TextBlock
                                 Text="{Binding Body}"
                                 TextWrapping="Wrap"

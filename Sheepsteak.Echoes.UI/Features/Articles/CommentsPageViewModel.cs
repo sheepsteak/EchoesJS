@@ -25,6 +25,8 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
         public int ArticleId { get; set; }
 
+        public string ArticleTitle { get; set; }
+
         public BindableCollection<Comment> Comments { get; private set; }
 
         public bool IsBusy
