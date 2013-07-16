@@ -3,6 +3,7 @@ using Sheepsteak.Echoes.Core;
 using Sheepsteak.Echoes.UI.Framework;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sheepsteak.Echoes.UI.Features.Articles
@@ -37,7 +38,18 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
                 this.isBusy = value;
 
                 this.NotifyOfPropertyChange(() => this.IsBusy);
+                this.NotifyOfPropertyChange(() => this.ShowNoCommentsMessage);
             }
+        }
+
+        public bool ShowComments
+        {
+            get { return this.Comments.Any(); }
+        }
+
+        public bool ShowNoCommentsMessage
+        {
+            get { return !this.IsBusy && !this.Comments.Any(); }
         }
 
         public void OpenInBrowser()
@@ -88,11 +100,11 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
             }
             else
             {
-                foreach (var comment in comments)
-                {
-                    this.Comments.Add(comment);
-                }
+                this.Comments.AddRange(comments);
             }
+
+            this.NotifyOfPropertyChange(() => this.ShowNoCommentsMessage);
+            this.NotifyOfPropertyChange(() => this.ShowComments);
         }
     }
 }

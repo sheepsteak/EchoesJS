@@ -55,7 +55,8 @@
             <controls:LongListSelector
                 x:Name="Comments"
                 Margin="0,0,-12,0"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                Visibility="{Binding ShowComments, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <controls:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel
@@ -76,6 +77,13 @@
                     </DataTemplate>
                 </controls:LongListSelector.ItemTemplate>
             </controls:LongListSelector>
+            <TextBlock
+                Foreground="{StaticResource PhoneSubtleBrush}"
+                Style="{StaticResource PhoneTextLargeStyle}"
+                Text="There aren't any comments for this article…"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Visibility="{Binding ShowNoCommentsMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
     </Grid>
 
