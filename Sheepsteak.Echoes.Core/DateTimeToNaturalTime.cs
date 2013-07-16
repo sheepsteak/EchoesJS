@@ -38,7 +38,7 @@ using System.Text;
 /// Converts a date time to a readable natural time (i.e. '10 hours', '2 years') or relative time (i.e. '5 days ago').
 /// </summary>
 /// <nuget id="netfx-System.Collections.Generic.DateTimeToNaturalTime"/>
-internal static partial class DateTimeToNaturalTimeExtension
+public static partial class DateTimeToNaturalTimeExtension
 {
 	/// <summary>
 	/// Renders the given date as a natural language string, appending the

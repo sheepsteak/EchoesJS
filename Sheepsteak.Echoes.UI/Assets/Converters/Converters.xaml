@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <cal:BooleanToVisibilityConverter
         x:Key="BooleanToVisibilityConverter" />
+    <converters:DateTimeOffsetToRelativeTimeConverter
+        x:Key="DateTimeOffsetToRelativeTimeConverter" />
     <converters:StringToUpperCaseConverter
         x:Key="StringToUpperCaseConverter" />
 </ResourceDictionary>
