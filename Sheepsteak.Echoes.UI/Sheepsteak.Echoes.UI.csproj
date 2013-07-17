@@ -100,9 +100,6 @@
     <Compile Include="Assets\Converters\DateTimeOffsetToRelativeTimeConverter.cs" />
     <Compile Include="Assets\Converters\StringToUpperCaseConverter.cs" />
     <Compile Include="Features\Articles\ArticlePageViewModel.cs" />
-    <Compile Include="Features\Articles\CommentsPage.xaml.cs">
-      <DependentUpon>CommentsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Features\Articles\CommentsPageViewModel.cs" />
     <Compile Include="Features\Main\LatestViewModel.cs" />
     <Compile Include="Features\Main\MainPageViewModel.cs" />
