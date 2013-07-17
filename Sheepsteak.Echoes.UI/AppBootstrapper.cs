@@ -32,7 +32,8 @@ namespace Sheepsteak.Echoes.UI
                 this.container.RegisterPhoneServices(this.RootFrame);
             }
 
-            this.container.PerRequest<ArticlePageViewModel>();
+            this.container.PerRequest<ArticleTextPageViewModel>();
+            this.container.PerRequest<ArticleWebPageViewModel>();
             this.container.PerRequest<CommentsPageViewModel>();
             this.container.PerRequest<MainPageViewModel>();
             this.container.PerRequest<TopViewModel>();

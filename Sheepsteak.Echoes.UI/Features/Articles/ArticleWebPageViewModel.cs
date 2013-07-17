@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Sheepsteak.Echoes.UI.Features.Articles
 {
-    public class ArticlePageViewModel : Screen
+    public class ArticleWebPageViewModel : Screen
     {
         private const string readabilityUrl = "http://readability.com/read?url={0}";
         private bool inReadabilityView;
@@ -21,7 +21,7 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
         private readonly IEventAggregator eventAggregator;
         private readonly INavigationService navigationService;
 
-        public ArticlePageViewModel(
+        public ArticleWebPageViewModel(
             ICacheService cacheService,
             IEventAggregator eventAggregator,
             INavigationService navigationService)

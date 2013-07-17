@@ -16,9 +16,19 @@ namespace Sheepsteak.Echoes.Core
         [JsonProperty("down")]
         public int DownVotes { get; set; }
 
+        public bool IsText
+        {
+            get { return this.Url.StartsWith("text://"); }
+        }
+
         [JsonProperty("ctime")]
         [JsonConverter(typeof(CTimeToDateTimeOffsetConverter))]
         public DateTimeOffset PostedAt { get; set; }
+
+        public string Text
+        {
+            get { return this.IsText ? this.Url.Remove(0, 7) : null; }
+        }
 
         [JsonProperty("title")]
         public string Title { get; set; }

@@ -184,7 +184,7 @@ namespace Sheepsteak.Echoes.UI.Features.Main
         private void NavigateToArticlePage(Article article)
         {
             this.cacheService.Articles[article.Id] = article;
-            var uriBuilder = this.navigationService.UriFor<ArticlePageViewModel>();
+            var uriBuilder = this.navigationService.UriFor<ArticleWebPageViewModel>();
             uriBuilder.WithParam(v => v.ArticleId, article.Id);
             this.navigationService.Navigate(uriBuilder.BuildUri());
         }
