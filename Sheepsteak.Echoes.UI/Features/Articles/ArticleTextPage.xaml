@@ -16,65 +16,66 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
-    <Grid
-        x:Name="LayoutRoot"
-        Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="*" />
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel
-            Grid.Row="0"
-            Margin="12,17,0,28">
-            <TextBlock
-                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
-                FontSize="{StaticResource PhoneFontSizeMedium}"
-                Style="{StaticResource PhoneTextNormalStyle}"
-                Text="{Binding Article.Title, Converter={StaticResource StringToUpperCaseConverter}}" />
-            <!--<TextBlock
-                Text="{Binding LocalizedResources.SettingsPageTitle, Source={StaticResource LocalizedStrings}}"
-                Margin="9,-10,0,0"
-                Style="{StaticResource PhoneTextTitle1Style}" />-->
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
+    <ScrollViewer>
         <Grid
-            x:Name="ContentPanel"
-            Grid.Row="1"
-            Margin="12,0,12,0">
-            <TextBlock
-                x:Name="Article_Text"
-                Style="{StaticResource PhoneTextNormalStyle}"
-                TextWrapping="Wrap" />
+            x:Name="LayoutRoot"
+            Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
 
-        </Grid>
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel
+                Grid.Row="0"
+                Margin="12,12,0,18">
+                <TextBlock
+                    Style="{StaticResource PhoneTextExtraLargeStyle}"
+                    Text="{Binding Article.Title}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    FontSize="{StaticResource PhoneFontSizeMedium}"
+                    Style="{StaticResource PhoneTextSubtleStyle}"
+                    Text="{Binding Article.PostedAt, Converter={StaticResource DateTimeOffsetToRelativeTimeConverter}}" />
+            </StackPanel>
 
-        <!--Uncomment to see an alignment grid to help ensure your controls are
+            <!--ContentPanel - place additional content here-->
+            <Grid
+                x:Name="ContentPanel"
+                Grid.Row="1"
+                Margin="12,0,12,0">
+                <TextBlock
+                    x:Name="Article_Text"
+                    FontSize="{StaticResource PhoneFontSizeMedium}"
+                    Style="{StaticResource PhoneTextNormalStyle}"
+                    TextWrapping="Wrap" />
+            </Grid>
+
+            <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
             account for the System Tray. Set this to 0 (or remove the margin altogether)
             if the System Tray is hidden.
 
             Before shipping remove this XAML and the image itself.-->
-        <!--<Image
-            Source="/Assets/AlignmentGrid.png"
-            VerticalAlignment="Top"
-            Height="800"
-            Width="480"
-            Margin="0,-32,0,0"
-            Grid.RowSpan="2"
-            IsHitTestVisible="False" />-->
+            <!--<Image
+                Source="/Assets/AlignmentGrid.png"
+                VerticalAlignment="Top"
+                Height="800"
+                Width="480"
+                Margin="0,-44,0,0"
+                Grid.RowSpan="2"
+                IsHitTestVisible="False" />-->
 
-        <bab:BindableAppBar>
-            <bab:BindableAppBarButton
-                x:Name="ShowComments"
-                IconUri="Assets/Images/chat.png"
-                Text="comments" />
-        </bab:BindableAppBar>
+            <bab:BindableAppBar>
+                <bab:BindableAppBarButton
+                    x:Name="ShowComments"
+                    IconUri="Assets/Images/chat.png"
+                    Text="comments" />
+            </bab:BindableAppBar>
 
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 
 </phone:PhoneApplicationPage>
