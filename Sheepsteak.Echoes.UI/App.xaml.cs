@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Microsoft.Phone.Controls;
+using System;
+using System.Windows;
 
 namespace Sheepsteak.Echoes.UI
 {
@@ -11,6 +13,9 @@ namespace Sheepsteak.Echoes.UI
         {
             // Standard XAML initialization
             InitializeComponent();
+
+            ThemeManager.OverrideOptions = ThemeManagerOverrideOptions.SystemTrayColors;
+            ThemeManager.SetCustomTheme(this.Resources.MergedDictionaries[0], Theme.Light);
         }
     }
 }

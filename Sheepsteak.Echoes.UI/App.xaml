@@ -11,6 +11,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary
+                    Source="Assets/Styles/ThemeResources.xaml" />
+                <ResourceDictionary
                     Source="Assets/Converters/Converters.xaml" />
                 <ResourceDictionary
                     Source="Assets/Styles/Pivots.xaml" />

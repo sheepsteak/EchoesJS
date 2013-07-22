@@ -99,12 +99,24 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Assets\Converters\DateTimeOffsetToRelativeTimeConverter.cs" />
     <Compile Include="Assets\Converters\StringToUpperCaseConverter.cs" />
+    <Compile Include="Features\Articles\ArticleTextPage.xaml.cs">
+      <DependentUpon>ArticleTextPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Articles\ArticleTextPageViewModel.cs" />
+    <Compile Include="Features\Articles\ArticleWebPage.xaml.cs">
+      <DependentUpon>ArticleWebPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Articles\ArticleWebPageViewModel.cs" />
     <Compile Include="Features\Articles\CommentsPageViewModel.cs" />
     <Compile Include="Features\Main\LatestViewModel.cs" />
+    <Compile Include="Features\Main\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Main\MainPageViewModel.cs" />
     <Compile Include="Features\Main\TopViewModel.cs" />
+    <Compile Include="Features\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Settings\SettingsPageViewModel.cs" />
     <Compile Include="Framework\ArticleCache.cs" />
     <Compile Include="Framework\CacheService.cs" />
@@ -133,6 +145,10 @@
     </Page>
     <Page Include="Assets\Styles\Colours.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Styles\ThemeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Features\Articles\ArticleWebPage.xaml">
@@ -221,6 +237,9 @@
     </Reference>
     <Reference Include="Caliburn.Micro.Extensions">
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="JeffWilcox.PhoneThemeManager">
+      <HintPath>..\packages\PhoneThemeManager.1.4\lib\sl4-windowsphone71\JeffWilcox.PhoneThemeManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">

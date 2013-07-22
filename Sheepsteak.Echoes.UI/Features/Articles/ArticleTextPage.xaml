@@ -68,7 +68,8 @@
                 Grid.RowSpan="2"
                 IsHitTestVisible="False" />-->
 
-            <bab:BindableAppBar>
+            <bab:BindableAppBar
+                x:Name="applicationBar">
                 <bab:BindableAppBarButton
                     x:Name="ShowComments"
                     IconUri="Assets/Images/chat.png"

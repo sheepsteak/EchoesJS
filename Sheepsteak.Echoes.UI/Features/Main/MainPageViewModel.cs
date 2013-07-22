@@ -9,15 +9,15 @@ namespace Sheepsteak.Echoes.UI.Features.Main
     public class MainPageViewModel : Conductor<IRefreshableScreen>.Collection.OneActive
     {
         private readonly LatestViewModel latestViewModel;
-          private readonly INavigationService navigationService;
-      private readonly TopViewModel topViewModel;
+        private readonly INavigationService navigationService;
+        private readonly TopViewModel topViewModel;
 
         public MainPageViewModel(
             INavigationService navigationService,
             TopViewModel topViewModel,
             LatestViewModel latestViewModel)
         {
-       this.navigationService= navigationService;
+            this.navigationService = navigationService;
             this.topViewModel = topViewModel;
             this.latestViewModel = latestViewModel;
         }
@@ -68,7 +68,7 @@ namespace Sheepsteak.Echoes.UI.Features.Main
                 this.ActiveItem.PropertyChanged += this.ActiveItem_PropertyChanged;
             }
         }
-        
+
         private void UnlistenToActiveItem()
         {
             if (this.ActiveItem != null)

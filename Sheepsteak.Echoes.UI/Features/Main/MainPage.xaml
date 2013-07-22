@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bab="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -63,8 +64,11 @@
             Margin="0,-32,0,0"
             Grid.Row="0"
             IsHitTestVisible="False" />-->
-        
-        <bab:BindableAppBar>
+
+        <bab:BindableAppBar
+            x:Name="applicationBar"
+            BackgroundColor="#af1d1d"
+            ForegroundColor="White">
             <bab:BindableAppBarButton
                 x:Name="RefreshArticles"
                 IconUri="/Assets/Images/refresh.png"

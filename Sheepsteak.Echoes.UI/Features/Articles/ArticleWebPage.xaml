@@ -65,7 +65,8 @@
             Grid.RowSpan="2"
             IsHitTestVisible="False" />-->
 
-        <bab:BindableAppBar>
+        <bab:BindableAppBar
+            x:Name="applicationBar">
             <bab:BindableAppBarButton
                 x:Name="SwitchView"
                 IconUri="{Binding SwitchViewIconUri}"
