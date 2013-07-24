@@ -61,25 +61,7 @@ namespace Sheepsteak.Echoes.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add.
-        /// </summary>
-        public static string AppBarButtonText {
-            get {
-                return ResourceManager.GetString("AppBarButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Menu Item.
-        /// </summary>
-        public static string AppBarMenuItemText {
-            get {
-                return ResourceManager.GetString("AppBarMenuItemText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ECHO.
+        ///   Looks up a localized string similar to ECHOES JS.
         /// </summary>
         public static string ApplicationTitle {
             get {
@@ -133,20 +115,11 @@ namespace Sheepsteak.Echoes.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to en-GB.
+        ///   Looks up a localized string similar to en-US.
         /// </summary>
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sample Runtime Property Value.
-        /// </summary>
-        public static string SampleProperty {
-            get {
-                return ResourceManager.GetString("SampleProperty", resourceCulture);
             }
         }
         

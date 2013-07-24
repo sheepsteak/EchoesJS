@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
-  <DefaultLanguage xmlns="" code="en-GB" />
+  <DefaultLanguage xmlns="" code="en-US" />
   <Languages xmlns="">
     <Language code="en-GB" />
+    <Language code="en-US" />
   </Languages>
-  <App xmlns="" ProductID="{3628a0cb-0764-484d-a02c-4234913a047c}" Title="Echoes" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Chris Shepherd" Description="Sample description" Publisher="Chris Shepherd" PublisherID="{741c3eb9-db71-4a7e-bff8-2f1c39a87c1f}">
+  <App xmlns="" ProductID="{3628a0cb-0764-484d-a02c-4234913a047c}" Title="Echoes JS" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Chris Shepherd" Description="Sample description" Publisher="Chris Shepherd" PublisherID="{741c3eb9-db71-4a7e-bff8-2f1c39a87c1f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -19,7 +20,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Echo</Title>
+          <Title>Echoes JS</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
@@ -28,8 +29,7 @@
           </BackTitle>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>False</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>
