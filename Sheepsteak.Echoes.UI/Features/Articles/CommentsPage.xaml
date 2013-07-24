@@ -64,7 +64,7 @@
                             <TextBlock
                                 FontSize="{StaticResource PhoneFontSizeMedium}"
                                 FontFamily="{StaticResource PhoneFontFamilySemiBold}"
-                                Text="Francesco Trillini"
+                                Text="{Binding Username}"
                                 Style="{StaticResource PhoneTextNormalStyle}" />
                             <TextBlock
                                 FontSize="{StaticResource PhoneFontSizeMedium}"
