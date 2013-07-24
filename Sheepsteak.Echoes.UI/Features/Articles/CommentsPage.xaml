@@ -62,14 +62,18 @@
                         <StackPanel
                             Margin="0,0,0,17">
                             <TextBlock
-                                Text="{Binding Username}"
-                                Style="{StaticResource PhoneTextLargeStyle}" />
+                                FontSize="{StaticResource PhoneFontSizeMedium}"
+                                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                Text="Francesco Trillini"
+                                Style="{StaticResource PhoneTextNormalStyle}" />
                             <TextBlock
+                                FontSize="{StaticResource PhoneFontSizeMedium}"
                                 Text="{Binding Body}"
                                 TextWrapping="Wrap"
                                 Margin="12,0,12,0"
                                 Style="{StaticResource PhoneTextNormalStyle}" />
                             <TextBlock
+                                FontSize="{StaticResource PhoneFontSizeMedium}"
                                 Text="{Binding PostedAt, Converter={StaticResource DateTimeOffsetToRelativeTimeConverter}}"
                                 Margin="12,0,12,0"
                                 Style="{StaticResource PhoneTextSubtleStyle}" />

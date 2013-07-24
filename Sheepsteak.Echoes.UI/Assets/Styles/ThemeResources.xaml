@@ -9,7 +9,7 @@ Copyright (c) Microsoft Corporation.  All rights reserved.
 
     <!-- Common colors -->
     <Color
-        x:Key="PhoneAccentColor">#FF00ABA9</Color>
+        x:Key="PhoneAccentColor">#FF9C1919</Color>
 
     <!-- 87 percent Black -->
     <Color
@@ -59,9 +59,11 @@ Copyright (c) Microsoft Corporation.  All rights reserved.
 
     <!-- 40 percent Black -->
     <Color
-        x:Key="PhoneSubtleColor">#66000000</Color>
+        x:Key="PhoneSubtleColor">#FF999999</Color>
+    <Color
+        x:Key="PhoneLessSubtleColor">#FF666666</Color>
 
-    <!-- 100 percent White -->
+        <!-- 100 percent White -->
     <Color
         x:Key="PhoneTextBoxSelectionForegroundColor">#FFFFFFFF</Color>
 
@@ -185,6 +187,10 @@ Copyright (c) Microsoft Corporation.  All rights reserved.
         x:Key="PhoneSubtleBrush"
         Color="{StaticResource PhoneSubtleColor}" />
 
+    <SolidColorBrush
+        x:Key="PhoneLessSubtleBrush"
+        Color="{StaticResource PhoneLessSubtleColor}" />
+    
     <SolidColorBrush
         x:Key="PhoneButtonBasePressedForegroundBrush"
         Color="{StaticResource PhoneButtonBasePressedForegroundColor}" />
