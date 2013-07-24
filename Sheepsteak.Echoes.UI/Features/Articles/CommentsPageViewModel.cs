@@ -76,12 +76,13 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
             try
             {
                 comments = await this.echoJsClient.GetCommentsForArticle(this.ArticleId);
+                comments = this.FlattenComments(comments);
             }
             catch (HttpRequestException)
             {
                 showFailMessage = true;
             }
-            catch (UnsupportedMediaTypeException e)
+            catch (UnsupportedMediaTypeException)
             {
                 showFailMessage = true;
             }
@@ -105,6 +106,23 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
             this.NotifyOfPropertyChange(() => this.ShowNoCommentsMessage);
             this.NotifyOfPropertyChange(() => this.ShowComments);
+        }
+
+        private IEnumerable<Comment> FlattenComments(IEnumerable<Comment> comments)
+        {
+            var flattenedComments = new List<Comment>();
+
+            foreach (var comment in comments)
+            {
+                flattenedComments.Add(comment);
+
+                if (comment.Replies != null && comment.Replies.Any())
+                {
+                    flattenedComments.AddRange(this.FlattenComments(comment.Replies));
+                }
+            }
+
+            return flattenedComments;
         }
     }
 }
