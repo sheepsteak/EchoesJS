@@ -46,7 +46,10 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
         {
             base.OnActivate();
 
-            this.Article = this.cacheService.Articles[this.ArticleId];
+            if (this.Article == null)
+            {
+                this.Article = this.cacheService.Articles[this.ArticleId];
+            }
 
             this.NotifyOfPropertyChange(() => this.Article);
         }
