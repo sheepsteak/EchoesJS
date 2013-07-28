@@ -179,7 +179,10 @@ namespace Sheepsteak.Echoes.UI.Features.Main
         {
             base.OnInitialize();
 
-            await this.RefreshArticles();
+            if (this.Articles.Count == 0)
+            {
+                await this.RefreshArticles();
+            }
         }
 
         private void NavigateToArticlePage(Article article)

@@ -110,12 +110,15 @@
     <Compile Include="Features\Articles\CommentsPageViewModel.cs" />
     <Compile Include="Features\Articles\ArticleTextPageViewModelStorage.cs" />
     <Compile Include="Features\Articles\ArticleWebPageViewModelStorage.cs" />
+    <Compile Include="Features\Main\MainPageViewModelStorage.cs" />
+    <Compile Include="Features\Main\LatestViewModelStorage.cs" />
     <Compile Include="Features\Main\LatestViewModel.cs" />
     <Compile Include="Features\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Main\MainPageViewModel.cs" />
     <Compile Include="Features\Main\TopViewModel.cs" />
+    <Compile Include="Features\Main\TopViewModelStorage.cs" />
     <Compile Include="Features\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
