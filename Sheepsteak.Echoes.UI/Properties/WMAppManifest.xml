@@ -17,15 +17,14 @@
     <Tokens>
       <PrimaryToken TokenID="Sheepsteak.EchoToken" TaskName="_default">
         <TemplateIconic>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\tile-small.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileSmall.png</SmallImageURI>
           <Count>0</Count>
-          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</IconImageURI>
+          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMedium.png</IconImageURI>
           <Title>EchoesJS</Title>
           <Message>
           </Message>
-          <BackgroundColor>
-          </BackgroundColor>
-          <HasLarge>false</HasLarge>
+          <BackgroundColor>#9C1919</BackgroundColor>
+          <HasLarge>False</HasLarge>
           <LargeContent1>
           </LargeContent1>
           <LargeContent2>

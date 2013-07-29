@@ -203,12 +203,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png" />
     <Content Include="Assets\Images\chat.png" />
     <Content Include="Assets\Images\settings.png" />
     <Content Include="Assets\Images\web.png" />
     <Content Include="Assets\Images\text.png" />
     <Content Include="Assets\Images\refresh.png" />
-    <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
+    <Content Include="Assets\Tiles\IconicTileMedium.png" />
     <Content Include="Assets\Tiles\IconicTileSmall.png" />
     <Content Include="Assets\Tiles\tile-small.png" />
   </ItemGroup>
