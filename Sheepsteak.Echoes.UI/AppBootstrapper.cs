@@ -45,6 +45,11 @@ namespace Sheepsteak.Echoes.UI
             AddCustomConventions();
         }
 
+        protected override PhoneApplicationFrame CreatePhoneApplicationFrame()
+        {
+            return new TransitionFrame();
+        }
+
         protected override object GetInstance(Type service, string key)
         {
             var instance = this.container.GetInstance(service, key);
