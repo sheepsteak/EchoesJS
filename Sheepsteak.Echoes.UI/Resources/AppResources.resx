@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>ECHOES JS</value>
+    <value>ECHOESJS</value>
   </data>
   <data name="LatestPivotTitle" xml:space="preserve">
     <value>latest</value>

@@ -70,7 +70,7 @@ namespace Sheepsteak.Echoes.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ECHOES JS.
+        ///   Looks up a localized string similar to ECHOESJS.
         /// </summary>
         public static string ApplicationTitle {
             get {
