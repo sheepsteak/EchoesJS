@@ -9,6 +9,7 @@
     xmlns:framework="clr-namespace:Sheepsteak.Echoes.UI.Framework"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -20,7 +21,8 @@
         <controls:LongListSelector
             x:Name="Articles"
             Margin="0,0,-12,0"
-            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            toolkit:TiltEffect.IsTiltEnabled="True">
             <controls:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <StackPanel
