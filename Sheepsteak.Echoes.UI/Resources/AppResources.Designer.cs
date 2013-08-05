@@ -61,6 +61,15 @@ namespace Sheepsteak.Echoes.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to about.
+        /// </summary>
+        public static string AboutPageTitle {
+            get {
+                return ResourceManager.GetString("AboutPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ECHOES JS.
         /// </summary>
         public static string ApplicationTitle {

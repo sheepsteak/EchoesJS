@@ -155,4 +155,7 @@
   <data name="CommentsPageTitle" xml:space="preserve">
     <value>comments</value>
   </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value>about</value>
+  </data>
 </root>

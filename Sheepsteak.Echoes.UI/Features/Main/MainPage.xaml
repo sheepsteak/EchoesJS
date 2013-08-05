@@ -98,9 +98,6 @@
                 x:Name="RefreshArticles"
                 IconUri="/Assets/Images/refresh.png"
                 Text="{Binding LocalizedResources.RefreshAppBarButtonText, Source={StaticResource LocalizedStrings}}" />
-            <bab:BindableAppBarMenuItem
-                x:Name="Settings"
-                Text="{Binding LocalizedResources.SettingsAppBarButtonText, Source={StaticResource LocalizedStrings}}" />
         </bab:BindableAppBar>
 
     </Grid>

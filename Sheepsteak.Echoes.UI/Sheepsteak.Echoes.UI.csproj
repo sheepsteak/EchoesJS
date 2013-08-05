@@ -99,6 +99,10 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Assets\Converters\DateTimeOffsetToRelativeTimeConverter.cs" />
     <Compile Include="Assets\Converters\StringToUpperCaseConverter.cs" />
+    <Compile Include="Features\About\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\About\AboutPageViewModel.cs" />
     <Compile Include="Features\Articles\ArticleTextPage.xaml.cs">
       <DependentUpon>ArticleTextPage.xaml</DependentUpon>
     </Compile>
@@ -155,6 +159,10 @@
     <Page Include="Assets\Styles\ThemeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Features\About\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Articles\ArticleWebPage.xaml">
       <SubType>Designer</SubType>
