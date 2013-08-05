@@ -19,7 +19,7 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>Sheepsteak.Echoes.UI_Debug_AnyCPU.xap</XapFilename>
+    <XapFilename>EchoesJS.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>Sheepsteak.Echoes.UI.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
