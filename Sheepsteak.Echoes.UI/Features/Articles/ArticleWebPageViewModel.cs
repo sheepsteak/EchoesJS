@@ -13,8 +13,8 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 {
     public class ArticleWebPageViewModel : Screen
     {
-        private const string readabilityUrl = "http://readability.com/read?url={0}";
-        private bool inReadabilityView;
+        private const string instapaperUrl = "http://www.instapaper.com/text?u={0}";
+        private bool inInstapaperView;
         private bool isBusy;
 
         private readonly ICacheService cacheService;
@@ -48,12 +48,12 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
         public string SwitchViewIconUri
         {
-            get { return this.inReadabilityView ? "/Assets/Images/web.png" : "/Assets/Images/text.png"; }
+            get { return this.inInstapaperView ? "/Assets/Images/web.png" : "/Assets/Images/text.png"; }
         }
 
         public string SwitchViewText
         {
-            get { return this.inReadabilityView ? AppResources.WebAppBarButtonText : AppResources.TextAppBarButtonText; }
+            get { return this.inInstapaperView ? AppResources.WebAppBarButtonText : AppResources.TextAppBarButtonText; }
         }
 
         public string Url
@@ -65,7 +65,7 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
                     return null;
                 }
 
-                return this.inReadabilityView ? string.Format(readabilityUrl, this.Article.Url) : this.Article.Url;
+                return this.inInstapaperView ? string.Format(instapaperUrl, Uri.EscapeDataString(this.Article.Url)) : this.Article.Url;
             }
         }
 
@@ -97,7 +97,7 @@ namespace Sheepsteak.Echoes.UI.Features.Articles
 
         public void SwitchView()
         {
-            this.inReadabilityView = !this.inReadabilityView;
+            this.inInstapaperView = !this.inInstapaperView;
 
             this.NotifyOfPropertyChange(() => this.Url);
             this.NotifyOfPropertyChange(() => this.SwitchViewIconUri);
