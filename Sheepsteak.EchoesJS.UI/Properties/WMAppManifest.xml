@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="en-US" />
   </Languages>
-  <App xmlns="" ProductID="{3628a0cb-0764-484d-a02c-4234913a047c}" Title="EchoesJS" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Chris Shepherd" Description="A simple way to keep up with what's new in the JavaScript world! You can see the latest and most popular stories submitted to Echo JS as well as any comments left." Publisher="Chris Shepherd" PublisherID="{741c3eb9-db71-4a7e-bff8-2f1c39a87c1f}">
+  <App xmlns="" ProductID="{3628a0cb-0764-484d-a02c-4234913a047c}" Title="EchoesJS" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="Chris Shepherd" Description="A simple way to keep up with what's new in the JavaScript world! You can see the latest and most popular stories submitted to Echo JS as well as any comments left." Publisher="Chris Shepherd" PublisherID="{741c3eb9-db71-4a7e-bff8-2f1c39a87c1f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
