@@ -27,19 +27,19 @@
             toolkit:TiltEffect.IsTiltEnabled="True">
             <controls:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid
+                        Margin="0,0,0,17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition
                                 Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <StackPanel
-                            cal:Message.Attach="[Event Tap] = [Action ShowArticle($dataContext)]"
-                            Margin="0,0,0,17">
+                            cal:Message.Attach="[Event Tap] = [Action ShowArticle($dataContext)]">
                             <TextBlock
                                 Text="{Binding Title}"
                                 TextWrapping="Wrap"
-                                Style="{StaticResource PhoneTextLargeStyle}" />
+                                Style="{StaticResource PhoneTextMediumLargeStyle}" />
                             <TextBlock
                                 Text="{Binding Description}"
                                 TextWrapping="Wrap"
@@ -55,6 +55,7 @@
                             FontSize="{StaticResource PhoneFontSizeMedium}"
                             Foreground="{StaticResource Brush.CommentsCalloutForeground}"
                             Grid.Column="1"
+                            Margin="0,6,12,0"
                             Padding="6"
                             VerticalAlignment="Top"
                             Width="60" />

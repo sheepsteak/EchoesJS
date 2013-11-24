@@ -73,6 +73,14 @@
         <phone:Pivot
             x:Name="Items"
             Title="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Margin="2,0,0,0"
+                        Style="{StaticResource PhoneTextExtraLargeStyle}"
+                        Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
         </phone:Pivot>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
