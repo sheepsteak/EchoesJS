@@ -1,5 +1,4 @@
 ﻿<UserControl
-    x:Class="Sheepsteak.EchoesJS.UI.Features.Main.LatestView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
@@ -10,6 +9,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:edc="clr-namespace:Microsoft.Expression.Controls;assembly=Microsoft.Expression.Drawing"
+    xmlns:em="clr-namespace:Microsoft.Expression.Media;assembly=Microsoft.Expression.Drawing"
+    x:Class="Sheepsteak.EchoesJS.UI.Features.Main.LatestView"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -25,18 +27,38 @@
             toolkit:TiltEffect.IsTiltEnabled="True">
             <controls:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel
-                        Margin="0,0,0,17">
-                        <TextBlock
-                            Text="{Binding Title}"
-                            TextWrapping="Wrap"
-                            Style="{StaticResource PhoneTextLargeStyle}" />
-                        <TextBlock
-                            Text="{Binding Description}"
-                            TextWrapping="Wrap"
-                            Margin="12,-6,12,0"
-                            Style="{StaticResource PhoneTextSubtleStyle}" />
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition
+                                Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            cal:Message.Attach="[Event Tap] = [Action ShowArticle($dataContext)]"
+                            Margin="0,0,0,17">
+                            <TextBlock
+                                Text="{Binding Title}"
+                                TextWrapping="Wrap"
+                                Style="{StaticResource PhoneTextLargeStyle}" />
+                            <TextBlock
+                                Text="{Binding Description}"
+                                TextWrapping="Wrap"
+                                Margin="12,-6,12,0"
+                                Style="{StaticResource PhoneTextSubtleStyle}" />
+                        </StackPanel>
+                        <edc:Callout
+                            cal:Message.Attach="[Event Tap] = [Action ShowComments($dataContext)]"
+                            AnchorPoint="0.1,1.5"
+                            CalloutStyle="Rectangle"
+                            Content="{Binding Comments}"
+                            Fill="{StaticResource Brush.Main}"
+                            FontSize="{StaticResource PhoneFontSizeMedium}"
+                            Foreground="{StaticResource Brush.CommentsCalloutForeground}"
+                            Grid.Column="1"
+                            Padding="6"
+                            VerticalAlignment="Top"
+                            Width="60" />
+                    </Grid>
                 </DataTemplate>
             </controls:LongListSelector.ItemTemplate>
             <interactions:Interaction.Triggers>

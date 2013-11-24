@@ -17,7 +17,6 @@ namespace Sheepsteak.EchoesJS.UI.Features.Main
         private readonly EchoJsClient echoJsClient;
         private bool isRefreshing;
         private readonly INavigationService navigationService;
-        private Article selectedArticle;
         private bool showFailureMessage;
 
         public TopViewModel(
@@ -46,22 +45,6 @@ namespace Sheepsteak.EchoesJS.UI.Features.Main
             }
         }
 
-        public Article SelectedArticle
-        {
-            get { return this.selectedArticle; }
-            set
-            {
-                this.selectedArticle = value;
-
-                if (this.selectedArticle != null)
-                {
-                    this.NavigateToArticlePage(this.selectedArticle);
-                }
-
-                this.NotifyOfPropertyChange(() => this.SelectedArticle);
-            }
-        }
-
         public bool ShowFailureMessage
         {
             get { return this.showFailureMessage; }
@@ -75,6 +58,32 @@ namespace Sheepsteak.EchoesJS.UI.Features.Main
         public bool ShowLoadingMessage
         {
             get { return this.IsRefreshing && this.Articles.Count == 0; }
+        }
+
+        public void ShowArticle(Article article)
+        {
+            this.cacheService.Articles[article.Id] = article;
+
+            if (article.IsText)
+            {
+                this.navigationService.UriFor<ArticleTextPageViewModel>()
+                    .WithParam(v => v.ArticleId, article.Id)
+                    .Navigate();
+            }
+            else
+            {
+                this.navigationService.UriFor<ArticleWebPageViewModel>()
+                    .WithParam(v => v.ArticleId, article.Id)
+                    .Navigate();
+            }
+        }
+
+        public void ShowComments(Article article)
+        {
+            this.navigationService.UriFor<CommentsPageViewModel>()
+                .WithParam(c => c.ArticleId, article.Id)
+                .WithParam(c => c.ArticleTitle, article.Title)
+                .Navigate();
         }
 
         public async Task LoadMore()
@@ -168,13 +177,6 @@ namespace Sheepsteak.EchoesJS.UI.Features.Main
             }
         }
 
-        protected override void OnDeactivate(bool close)
-        {
-            base.OnDeactivate(close);
-
-            this.SelectedArticle = null;
-        }
-
         protected async override void OnInitialize()
         {
             base.OnInitialize();
@@ -182,24 +184,6 @@ namespace Sheepsteak.EchoesJS.UI.Features.Main
             if (this.Articles.Count == 0)
             {
                 await this.RefreshArticles();
-            }
-        }
-
-        private void NavigateToArticlePage(Article article)
-        {
-            this.cacheService.Articles[article.Id] = article;
-
-            if (article.IsText)
-            {
-                this.navigationService.UriFor<ArticleTextPageViewModel>()
-                    .WithParam(v => v.ArticleId, article.Id)
-                    .Navigate();
-            }
-            else
-            {
-                this.navigationService.UriFor<ArticleWebPageViewModel>()
-                    .WithParam(v => v.ArticleId, article.Id)
-                    .Navigate();
             }
         }
     }
