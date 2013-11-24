@@ -42,10 +42,7 @@
             <interactions:Interaction.Triggers>
                 <framework:LongListSelectorInfiniteScrollingTrigger>
                     <cal:ActionMessage
-                        MethodName="LoadMore">
-                        <cal:Parameter
-                            Value="$source" />
-                    </cal:ActionMessage>
+                        MethodName="LoadMore" />
                 </framework:LongListSelectorInfiniteScrollingTrigger>
             </interactions:Interaction.Triggers>
         </controls:LongListSelector>
